@@ -1,7 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -9,42 +7,245 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.coming-soon {
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				padding: 2rem;
+				background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+				color: white;
+			}
+			
+			.hero {
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			
+			.logo {
+				font-size: 4rem;
+				font-weight: 700;
+				margin-bottom: 1rem;
+				background: linear-gradient(45deg, #ecf0f1, #bdc3c7);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			
+			.tagline {
+				font-size: 1.5rem;
+				margin-bottom: 2rem;
+				opacity: 0.9;
+				font-weight: 300;
+			}
+			
+			.description {
+				font-size: 1.2rem;
+				margin-bottom: 3rem;
+				opacity: 0.8;
+				line-height: 1.6;
+			}
+			
+			.author-info {
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 3rem;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+			
+			.author-title {
+				font-size: 1.1rem;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+				color: #3498db;
+			}
+			
+			.cta-section {
+				margin-bottom: 3rem;
+			}
+			
+			.email-form {
+				display: flex;
+				gap: 1rem;
+				max-width: 400px;
+				margin: 0 auto;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			
+			.email-input {
+				padding: 1rem 1.5rem;
+				border: none;
+				border-radius: 50px;
+				font-size: 1rem;
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				flex: 1;
+				min-width: 250px;
+			}
+			
+			.email-input::placeholder {
+				color: rgba(255, 255, 255, 0.7);
+			}
+			
+			.submit-btn {
+				padding: 1rem 2rem;
+				border: none;
+				border-radius: 50px;
+				background: linear-gradient(45deg, #e74c3c, #c0392b);
+				color: white;
+				font-weight: 600;
+				cursor: pointer;
+				transition: transform 0.2s ease;
+				white-space: nowrap;
+			}
+			
+			.submit-btn:hover {
+				transform: translateY(-2px);
+			}
+			
+			.features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
+				margin-top: 3rem;
+				max-width: 600px;
+			}
+			
+			.feature {
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 15px;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+			
+			.feature-icon {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+			
+			.feature-title {
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+			
+			.feature-desc {
+				font-size: 0.9rem;
+				opacity: 0.8;
+			}
+			
+			.social-links {
+				margin-top: 3rem;
+			}
+			
+			.social-links a {
+				color: white;
+				text-decoration: none;
+				margin: 0 1rem;
+				font-size: 1.2rem;
+				opacity: 0.7;
+				transition: opacity 0.2s ease;
+			}
+			
+			.social-links a:hover {
+				opacity: 1;
+			}
+			
+			@media (max-width: 768px) {
+				.logo {
+					font-size: 3rem;
+				}
+				
+				.tagline {
+					font-size: 1.2rem;
+				}
+				
+				.email-form {
+					flex-direction: column;
+					align-items: center;
+				}
+				
+				.email-input {
+					min-width: 200px;
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="coming-soon">
+			<div class="hero">
+				<h1 class="logo">Briefer</h1>
+				<p class="tagline">Legal Insights & Analysis</p>
+				<p class="description">
+					Professional legal commentary and analysis on contemporary legal issues. 
+					Clear, concise insights from a current law student and future barrister.
+				</p>
+				
+				<div class="author-info">
+					<div class="author-title">About the Author</div>
+					<p>Current law student with a passion for legal analysis and advocacy. 
+					Preparing for a career as a barrister, sharing insights on legal developments, 
+					case law, and the practice of law.</p>
+				</div>
+				
+				<div class="cta-section">
+					<h2>Stay Informed</h2>
+					<p>Be notified when new legal insights are published</p>
+					<form class="email-form">
+						<input 
+							type="email" 
+							class="email-input" 
+							placeholder="Enter your email address"
+							required
+						>
+						<button type="submit" class="submit-btn">Subscribe</button>
+					</form>
+				</div>
+				
+				<div class="features">
+					<div class="feature">
+						<div class="feature-icon">⚖️</div>
+						<div class="feature-title">Case Analysis</div>
+						<div class="feature-desc">In-depth examination of landmark cases and recent judgments</div>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">📚</div>
+						<div class="feature-title">Legal Commentary</div>
+						<div class="feature-desc">Expert analysis of legal developments and reforms</div>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">🎯</div>
+						<div class="feature-title">Practical Insights</div>
+						<div class="feature-desc">Real-world applications and implications of legal principles</div>
+					</div>
+				</div>
+				
+				<div class="social-links">
+					<a href="#" aria-label="LinkedIn">💼</a>
+					<a href="#" aria-label="Twitter">🐦</a>
+					<a href="#" aria-label="Email">✉️</a>
+				</div>
+			</div>
 		</main>
-		<Footer />
+		
+		<script>
+			// Simple form handling
+			document.querySelector('.email-form').addEventListener('submit', function(e) {
+				e.preventDefault();
+				const email = this.querySelector('.email-input').value;
+				if (email) {
+					alert('Thank you for subscribing! You\'ll be notified when new legal insights are published.');
+					this.querySelector('.email-input').value = '';
+				}
+			});
+		</script>
 	</body>
 </html>

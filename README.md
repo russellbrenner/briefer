@@ -1,64 +1,96 @@
-# Astro Starter Kit: Blog
+# Briefer - Legal Insights & Analysis
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+**Professional legal commentary and analysis by a current law student and future barrister.**
 
-<!-- dash-content-start -->
+## 📚 About
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+Briefer is a professional legal blog that provides clear, concise insights on contemporary legal issues. Written by a current law student with a passion for legal analysis and advocacy, preparing for a career as a barrister.
 
-Features:
+### What to Expect
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
+- **Case Analysis**: In-depth examination of landmark cases and recent judgments
+- **Legal Commentary**: Expert analysis of legal developments and reforms
+- **Practical Insights**: Real-world applications and implications of legal principles
 
-<!-- dash-content-end -->
+## 🚀 Live Site
 
-## Getting Started
+**Currently deployed at**: [https://briefer.overlaynet.workers.dev](https://briefer.overlaynet.workers.dev)
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## 🛠️ Built With
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+- **[Astro](https://astro.build)** - Modern static site generator
+- **[Cloudflare Workers](https://workers.cloudflare.com)** - Edge deployment platform
+- **TypeScript** - Type-safe development
+- **MDX** - Enhanced markdown with React components
+
+## 📁 Project Structure
+
+```
+briefer/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── content/        # Blog posts and content
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Route pages
+│   └── styles/         # Global styles
+├── public/             # Static assets
+└── dist/              # Build output
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+## 🧞 Development Commands
 
-## 🚀 Project Structure
+All commands are run from the root of the project:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:4321`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run deploy`       | Deploy your production site to Cloudflare        |
+| `npm run astro --help` | Get help using the Astro CLI                     |
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚀 Deployment
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+This project is configured for deployment on Cloudflare Workers:
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. **Build**: `npm run build`
+2. **Deploy**: `npm run deploy`
 
-## 🧞 Commands
+The site automatically deploys to Cloudflare Workers with:
+- ✅ Global CDN distribution
+- ✅ Automatic HTTPS
+- ✅ Edge computing capabilities
+- ✅ Built-in analytics
 
-All commands are run from the root of the project, from a terminal:
+## 📝 Content Management
 
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
+Blog posts are written in Markdown/MDX and stored in `src/content/blog/`. Each post includes:
 
-## 👀 Want to learn more?
+- Frontmatter with metadata (title, date, description)
+- Markdown content with support for MDX components
+- Automatic sitemap generation
+- RSS feed generation
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🎨 Customization
 
-## Credit
+The site uses a custom design system with:
+- Professional legal-themed color scheme
+- Responsive design for all devices
+- Modern typography and spacing
+- Glassmorphism UI elements
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## 📧 Contact & Social
+
+- **LinkedIn**: [Russell Brenner](https://linkedin.com/in/russellbrenner)
+- **Email**: [russ@briefer.me](mailto:russ@briefer.me)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Built with ❤️ by a future barrister**
