@@ -21,7 +21,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			}
 			
 			.hero {
-				max-width: 800px;
+				max-width: 600px;
 				margin: 0 auto;
 			}
 			
@@ -42,123 +42,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				font-weight: 300;
 			}
 			
-			.description {
-				font-size: 1.2rem;
-				margin-bottom: 3rem;
-				opacity: 0.8;
-				line-height: 1.6;
-			}
-			
-			.author-info {
-				background: rgba(255, 255, 255, 0.1);
-				border-radius: 15px;
-				padding: 2rem;
-				margin-bottom: 3rem;
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-			}
-			
-			.author-title {
-				font-size: 1.1rem;
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-				color: #3498db;
-			}
-			
-			.cta-section {
-				margin-bottom: 3rem;
-			}
-			
-			.email-form {
-				display: flex;
-				gap: 1rem;
-				max-width: 400px;
-				margin: 0 auto;
-				flex-wrap: wrap;
-				justify-content: center;
-			}
-			
-			.email-input {
-				padding: 1rem 1.5rem;
-				border: none;
-				border-radius: 50px;
-				font-size: 1rem;
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				flex: 1;
-				min-width: 250px;
-			}
-			
-			.email-input::placeholder {
-				color: rgba(255, 255, 255, 0.7);
-			}
-			
-			.submit-btn {
-				padding: 1rem 2rem;
-				border: none;
-				border-radius: 50px;
-				background: linear-gradient(45deg, #e74c3c, #c0392b);
-				color: white;
-				font-weight: 600;
-				cursor: pointer;
-				transition: transform 0.2s ease;
-				white-space: nowrap;
-			}
-			
-			.submit-btn:hover {
-				transform: translateY(-2px);
-			}
-			
-			.features {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				gap: 2rem;
-				margin-top: 3rem;
-				max-width: 600px;
-			}
-			
-			.feature {
-				padding: 1.5rem;
-				background: rgba(255, 255, 255, 0.1);
-				border-radius: 15px;
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-			}
-			
-			.feature-icon {
-				font-size: 2rem;
-				margin-bottom: 1rem;
-			}
-			
-			.feature-title {
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-			
-			.feature-desc {
-				font-size: 0.9rem;
-				opacity: 0.8;
-			}
-			
-			.social-links {
-				margin-top: 3rem;
-			}
-			
-			.social-links a {
-				color: white;
-				text-decoration: none;
-				margin: 0 1rem;
-				font-size: 1.2rem;
-				opacity: 0.7;
-				transition: opacity 0.2s ease;
-			}
-			
-			.social-links a:hover {
-				opacity: 1;
-			}
-			
 			@media (max-width: 768px) {
 				.logo {
 					font-size: 3rem;
@@ -167,15 +50,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				.tagline {
 					font-size: 1.2rem;
 				}
-				
-				.email-form {
-					flex-direction: column;
-					align-items: center;
-				}
-				
-				.email-input {
-					min-width: 200px;
-				}
 			}
 		</style>
 	</head>
@@ -183,69 +57,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<main class="coming-soon">
 			<div class="hero">
 				<h1 class="logo">Briefer</h1>
-				<p class="tagline">Legal Insights & Analysis</p>
-				<p class="description">
-					Professional legal commentary and analysis on contemporary legal issues. 
-					Clear, concise insights from a current law student and future barrister.
-				</p>
-				
-				<div class="author-info">
-					<div class="author-title">About the Author</div>
-					<p>Current law student with a passion for legal analysis and advocacy. 
-					Preparing for a career as a barrister, sharing insights on legal developments, 
-					case law, and the practice of law.</p>
-				</div>
-				
-				<div class="cta-section">
-					<h2>Stay Informed</h2>
-					<p>Be notified when new legal insights are published</p>
-					<form class="email-form">
-						<input 
-							type="email" 
-							class="email-input" 
-							placeholder="Enter your email address"
-							required
-						>
-						<button type="submit" class="submit-btn">Subscribe</button>
-					</form>
-				</div>
-				
-				<div class="features">
-					<div class="feature">
-						<div class="feature-icon">⚖️</div>
-						<div class="feature-title">Case Analysis</div>
-						<div class="feature-desc">In-depth examination of landmark cases and recent judgments</div>
-					</div>
-					<div class="feature">
-						<div class="feature-icon">📚</div>
-						<div class="feature-title">Legal Commentary</div>
-						<div class="feature-desc">Expert analysis of legal developments and reforms</div>
-					</div>
-					<div class="feature">
-						<div class="feature-icon">🎯</div>
-						<div class="feature-title">Practical Insights</div>
-						<div class="feature-desc">Real-world applications and implications of legal principles</div>
-					</div>
-				</div>
-				
-				<div class="social-links">
-					<a href="#" aria-label="LinkedIn">💼</a>
-					<a href="#" aria-label="Twitter">🐦</a>
-					<a href="#" aria-label="Email">✉️</a>
-				</div>
+				<p class="tagline">Coming Soon...</p>
 			</div>
 		</main>
-		
-		<script>
-			// Simple form handling
-			document.querySelector('.email-form').addEventListener('submit', function(e) {
-				e.preventDefault();
-				const email = this.querySelector('.email-input').value;
-				if (email) {
-					alert('Thank you for subscribing! You\'ll be notified when new legal insights are published.');
-					this.querySelector('.email-input').value = '';
-				}
-			});
-		</script>
 	</body>
 </html>

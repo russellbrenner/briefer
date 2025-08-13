@@ -7,7 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://briefer.pages.dev",
+  site: "https://briefer.me",
   integrations: [mdx(), sitemap()],
   adapter: cloudflare({
     platformProxy: {
