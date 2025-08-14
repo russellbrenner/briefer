@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import FormattedDate from '../components/FormattedDate.astro';
 ---
 
 <!doctype html>
@@ -83,6 +84,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<div class="hero">
 				<h1 class="logo">Briefer</h1>
 				<p class="tagline">Coming Soon...</p>
+				<p style="margin-top: 1rem; font-size: 1rem; opacity: 0.8;">
+					Last updated: <FormattedDate date={new Date()} />
+				</p>
 				<a href="mailto:enquiries@briefer.me" class="contact-link">
 					📧 Enquiries
 				</a>

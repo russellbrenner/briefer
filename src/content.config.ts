@@ -15,4 +15,19 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Note collections
+
+// Additional collection for selectively-published Obsidian notes
+const uni = defineCollection({
+  loader: glob({ base: "./src/content/uni", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    course: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+  }).passthrough(),
+});
+
+export const collections = { blog, uni };

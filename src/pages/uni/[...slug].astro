@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('uni');
+  return notes.map((entry) => ({
+    params: { slug: entry.slug.split('/') },
+    props: { entry },
+  }));
+}
+
+const { Content, data } = Astro.props.entry;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{data.title ?? Astro.props.entry.slug}</title>
+  </head>
+  <body>
+    <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+      <p><a href="/uni">← Back to Uni notes</a></p>
+      <article>
+        <h1>{data.title ?? Astro.props.entry.slug}</h1>
+        <Content />
+      </article>
+    </main>
+  </body>
+  </html>
+

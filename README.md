@@ -49,6 +49,7 @@ All commands are run from the root of the project:
 | `npm run dev`          | Starts local dev server at `localhost:4321`      |
 | `npm run build`        | Build your production site to `./dist/`          |
 | `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run sync:uni`     | Sync selected Obsidian Uni notes into the site   |
 | `npm run deploy`       | Deploy your production site to Cloudflare        |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
@@ -73,6 +74,33 @@ Blog posts are written in Markdown/MDX and stored in `src/content/blog/`. Each p
 - Markdown content with support for MDX components
 - Automatic sitemap generation
 - RSS feed generation
+
+### Selectively publishing Obsidian Uni notes
+
+This repo can import a subset of your Obsidian vault (e.g. `LAW10013`, `LAW20009`) and publish them at `/uni`.
+
+- Source vault path: set `OBSIDIAN_UNI_PATH` (defaults to `/Users/rbrenner/Obsidian/Uni`).
+- Included courses: set `OBSIDIAN_COURSES` as a comma list (defaults to `LAW10013,LAW20009`).
+- Optional per-note flag: set `OBSIDIAN_REQUIRE_PUBLISH=true` to only include notes with `publish: true` in frontmatter.
+
+Commands:
+
+```
+OBSIDIAN_UNI_PATH="/Users/rbrenner/Obsidian/Uni" npm run sync:uni
+```
+
+How it works:
+- Copies Markdown notes to `src/content/uni/<COURSE>/...`
+- Copies non-Markdown assets (images, pdfs, etc.) to `public/uni/<COURSE>/...`
+- Rewrites common image links in Markdown to reference `/uni/<COURSE>/...`
+- Adds `course: <COURSE>` to frontmatter if not present
+
+Routes:
+- Index at `/uni`
+- Per-note pages at `/uni/<course>/<path-to-note>`
+
+Notes:
+- For robust Obsidian-to-Markdown conversion (wiki links, embeds), consider using the `obsidian-export` CLI and running it before `sync:uni`.
 
 ## 🎨 Customization
 

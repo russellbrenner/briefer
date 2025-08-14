@@ -12,7 +12,8 @@
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "sync:uni": "node scripts/sync-obsidian.mjs"
   },
   "type": "module"
 }

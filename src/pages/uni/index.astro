@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+const notes = await getCollection('uni');
+const byCourse = new Map();
+for (const n of notes) {
+  const course = (n.data.course || n.slug.split('/')[0] || 'Uncategorized').toString();
+  if (!byCourse.has(course)) byCourse.set(course, []);
+  byCourse.get(course).push(n);
+}
+for (const list of byCourse.values()) list.sort((a, b) => a.slug.localeCompare(b.slug));
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uni Notes</title>
+  </head>
+  <body>
+    <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+      <h1>Uni Notes</h1>
+      {Array.from(byCourse.entries()).map(([course, items]) => (
+        <section>
+          <h2>{course}</h2>
+          <ul>
+            {items.map((n) => (
+              <li>
+                <a href={`/uni/${n.slug}`}>{n.data.title ?? n.slug}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </main>
+  </body>
+  </html>
+
