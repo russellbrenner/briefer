@@ -42,6 +42,26 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				font-weight: 300;
 			}
 			
+			.contact-link {
+				display: inline-block;
+				margin-top: 2rem;
+				padding: 1rem 2rem;
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+				text-decoration: none;
+				border-radius: 50px;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				backdrop-filter: blur(10px);
+				transition: all 0.3s ease;
+				font-weight: 500;
+			}
+			
+			.contact-link:hover {
+				background: rgba(255, 255, 255, 0.2);
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+			}
+			
 			@media (max-width: 768px) {
 				.logo {
 					font-size: 3rem;
@@ -49,6 +69,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				
 				.tagline {
 					font-size: 1.2rem;
+				}
+				
+				.contact-link {
+					padding: 0.8rem 1.5rem;
+					font-size: 0.9rem;
 				}
 			}
 		</style>
@@ -58,6 +83,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<div class="hero">
 				<h1 class="logo">Briefer</h1>
 				<p class="tagline">Coming Soon...</p>
+				<a href="mailto:enquiries@briefer.me" class="contact-link">
+					📧 Enquiries
+				</a>
 			</div>
 		</main>
 	</body>
