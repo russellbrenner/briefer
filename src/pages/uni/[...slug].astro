@@ -1,27 +1,28 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const notes = await getCollection('uni');
   return notes.map((entry) => ({
-    params: { slug: entry.slug.split('/') },
-    props: { entry },
+    params: { slug: entry.id },
+    props: entry,
   }));
 }
 
-const { Content, data } = Astro.props.entry;
+const entry = Astro.props;
+const { Content } = await render(entry);
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{data.title ?? Astro.props.entry.slug}</title>
+    <title>{entry.data.title ?? entry.id}</title>
   </head>
   <body>
     <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
       <p><a href="/uni">← Back to Uni notes</a></p>
       <article>
-        <h1>{data.title ?? Astro.props.entry.slug}</h1>
+        <h1>{entry.data.title ?? entry.id}</h1>
         <Content />
       </article>
     </main>

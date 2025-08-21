@@ -3,11 +3,11 @@ import { getCollection } from 'astro:content';
 const notes = await getCollection('uni');
 const byCourse = new Map();
 for (const n of notes) {
-  const course = (n.data.course || n.slug.split('/')[0] || 'Uncategorized').toString();
+  const course = (n.data.course || (n.id ? n.id.split('/')[0] : null) || 'Uncategorized').toString();
   if (!byCourse.has(course)) byCourse.set(course, []);
   byCourse.get(course).push(n);
 }
-for (const list of byCourse.values()) list.sort((a, b) => a.slug.localeCompare(b.slug));
+for (const list of byCourse.values()) list.sort((a, b) => (a.id || '').localeCompare(b.id || ''));
 ---
 <html lang="en">
   <head>
@@ -24,7 +24,7 @@ for (const list of byCourse.values()) list.sort((a, b) => a.slug.localeCompare(b
           <ul>
             {items.map((n) => (
               <li>
-                <a href={`/uni/${n.slug}`}>{n.data.title ?? n.slug}</a>
+                <a href={`/uni/${n.id || ''}/`}>{n.data.title ?? n.id ?? 'Untitled'}</a>
               </li>
             ))}
           </ul>
