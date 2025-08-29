@@ -12,6 +12,7 @@
 ## 🛠️ Built With
 
 - **[Astro](https://astro.build)** - Modern static site generator
+- **[Starlight](https://starlight.astro.build)** - Professional documentation framework
 - **[Cloudflare Workers](https://workers.cloudflare.com)** - Edge computing platform
 - **TypeScript** - Type-safe development
 - **MDX** - Enhanced markdown with React components
@@ -24,10 +25,11 @@ briefer/
 │   ├── components/     # Reusable UI components
 │   ├── content/        # Blog posts and content
 │   │   ├── blog/       # Blog posts (markdown/mdx)
+│   │   ├── docs/       # Starlight documentation (study materials)
 │   │   └── uni/        # University notes (synced from Obsidian)
 │   ├── layouts/        # Page layouts
 │   ├── pages/          # Route pages
-│   └── styles/         # Global styles
+│   └── styles/         # Global styles + Starlight customization
 ├── public/             # Static assets
 ├── scripts/            # Build and sync scripts
 ├── dist/              # Build output (generated)
@@ -76,7 +78,7 @@ export OBSIDIAN_REQUIRE_PUBLISH=true  # Only sync notes with publish: true
 ```bash
 # 1. Start development server
 npm run dev
-# Opens at http://localhost:4321
+# Opens at http://localhost:4323
 
 # 2. Sync university notes (if applicable)
 npm run sync:uni
@@ -111,6 +113,33 @@ npx wrangler deploy --env production
 ```
 
 ## 📝 Content Management
+
+### Starlight Documentation (Study Materials)
+
+Create professional study guides in `src/content/docs/` with Starlight formatting:
+
+```markdown
+---
+title: "Week 7 Study Guide: Hearsay Evidence"
+description: "Comprehensive study guide covering hearsay evidence rules and exceptions"
+sidebar:
+  order: 1
+---
+
+# Study Guide: Hearsay Evidence
+
+## Core Concepts
+
+:::note[Definition]
+Evidence of a statement offered to prove the truth of what is being asserted.
+:::
+
+### Key Cases
+
+:::tip[Subramaniam v Public Prosecutor]
+Classic case illustrating hearsay vs original evidence distinction.
+:::
+```
 
 ### Blog Posts
 
@@ -353,5 +382,25 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ by a future barrister**
+
+## ✨ Key Features
+
+### Professional Legal Documentation
+- **Starlight Integration**: Professional documentation framework for study materials
+- **Interactive Callouts**: Note, tip, caution, and danger callouts for better content organization
+- **Auto-generated Navigation**: Sidebar and table of contents generated from file structure
+- **Professional Styling**: Custom CSS for legal academic content presentation
+
+### Content Management
+- **Multi-source Content**: Blog posts, university notes (Obsidian sync), and Starlight docs
+- **Selective Publishing**: Only sync Obsidian notes with `publish: true` flag
+- **Rich Typography**: Inter and Newsreader fonts for professional appearance
+- **Responsive Design**: Mobile-optimized for study on any device
+
+### Development & Deployment
+- **Modern Stack**: Astro 5 + Starlight + TypeScript + Cloudflare Workers
+- **Edge Deployment**: Global CDN with Cloudflare Workers for fast access
+- **Automated CI/CD**: GitHub Actions for seamless deployments
+- **Content Collections**: Type-safe content with schema validation
 
 *Last updated: August 29, 2025*
