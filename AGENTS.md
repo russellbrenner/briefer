@@ -1,4 +1,52 @@
-# Repository Guidelines
+# Repository Guidelines & Agent Usage Summary
+
+This document serves as a comprehensive guide for understanding the repository structure, development workflow, and the AI agents used in building this professional documentation system.
+
+## Claude Code Agent Usage Summary
+
+### Primary Agents Used
+
+1. **General-purpose Agent**: Used extensively for complex multi-step tasks including:
+   - Analyzing existing Starlight implementation and theme issues  
+   - Researching content enhancement patterns and transformation strategies
+   - Troubleshooting build and deployment issues across multiple iterations
+
+2. **DevOps Engineer Agent**: Employed for:
+   - Cloudflare Pages deployment configuration and optimization
+   - Build pipeline setup with post-build cleanup processes  
+   - Static site generation architecture decisions
+
+### Key Transformation Prompts Used
+
+The markdown enhancement system uses these automated transformation patterns:
+
+```javascript
+// Definition patterns
+"Definition:" → `:::note[Definition]`
+
+// Case law formatting  
+"Key Cases:" → `:::note[Key Cases]`
+
+// Practice guidance
+"Practice Tip:" → `:::tip[Practice Tip]` 
+
+// Important legal elements
+"Key Elements:" → `:::caution[Key Elements]`
+
+// Section references with badges
+"s 55" → `<Badge text="s 55" variant="tip" />`
+
+// Structured callouts for legal content
+"Rule:" → `:::caution[Rule]`
+"Remember:" → `:::tip[Remember]`
+```
+
+### Content Processing Workflow
+
+1. **Obsidian Sync**: Raw markdown with `publish: true` frontmatter
+2. **Enhancement Pipeline**: Automated pattern matching and Starlight component injection
+3. **Build Process**: Static generation with optimized assets and lightbox functionality
+4. **Deployment**: Cloudflare Pages with build cleanup and performance optimization
 
 ## Project Structure & Module Organization
 - `src/`: App code.
@@ -20,6 +68,7 @@
 - `npm run build:raw`: Build without post-processing.
 - `npm run preview`: Preview the built site locally.
 - `npm run sync:uni`: Sync Obsidian notes → `src/content/uni/` and media → `public/uni/`.
+- `npm run sync:enhanced`: Enhanced sync with automatic Starlight transformation.
 - `npm run sync:media`: Copy media from vault with size/meta rules.
 - `npm run deploy`: Build and deploy via Cloudflare Wrangler.
 

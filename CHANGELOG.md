@@ -2,9 +2,62 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2025-08-29
+
+### üñºÔ∏è Interactive Lightbox System
+- **NEW**: Click any image to open interactive lightbox with advanced functionality
+- **Smooth Zoom**: 10% incremental zoom up to 5x magnification for detailed examination
+- **Pan & Drag**: Navigate zoomed images with mouse dragging for flowchart exploration  
+- **Download Support**: Download original images with preserved filenames
+- **Keyboard Controls**: ESC (close), +/- (zoom), 0 (reset) for efficient navigation
+- **Mouse Wheel Zoom**: Intuitive scroll-to-zoom functionality
+- **Mobile Support**: Touch gestures and responsive design for all devices
+
+### üé® Enhanced Theme & Typography
+- **Improved Dark Mode**: Refined color palette (#0f172a backgrounds) with excellent contrast (#e2e8f0 text)
+- **Typography Balance**: Scaled down oversized headers while enlarging body text to 1.1rem
+- **Modern Color Scheme**: Clean blue accent (#0284c7) replacing previous brown tones
+- **Search Visibility**: Fixed white-on-white search box issues in both light and dark modes
+- **Professional Presentation**: Optimized for extended reading sessions
+
+### üìÑ Automated Content Enhancement  
+- **Plain Markdown ‚Üí Starlight**: Automated transformation system for Obsidian notes
+- **Pattern Recognition**: Converts definitions, cases, tips, and elements to Starlight callouts
+- **Legal Badges**: Section references (s 55) automatically styled with badges
+- **Repeatable Process**: `npm run sync:enhanced` for ongoing content additions
+- **Schema Validation**: Enhanced content collections with publish flag support
+
+### üèóÔ∏è Technical Infrastructure
+- **Static Site Generation**: Migrated from SSR to optimized static output for Cloudflare Pages
+- **Global Script Loading**: Starlight-compatible lightbox implementation
+- **Build Optimization**: Post-build cleanup with comprehensive logging
+- **Content Pipeline**: Enhanced sync scripts for automatic transformation
+- **Component Architecture**: Reusable lightbox system for all documentation images
+
+### üìö Content Management
+- **Filtered Publishing**: Only 11 notes with `publish: true` displayed (down from 30+ total)
+- **Enhanced Navigation**: Organized sidebar with Evidence Law and Commercial Law sections  
+- **Simplified Homepage**: Clean "Recent Study Materials" replacing cluttered featured cards
+- **Professional Structure**: Academic course organization with logical hierarchies
+
+### üîß Developer Experience  
+- **Transformation Prompts**: Documented patterns for automatic content enhancement
+- **Enhanced Documentation**: Updated AGENTS.md with comprehensive usage examples
+- **Improved README**: Current feature set and lightbox functionality described
+- **Build Process**: Streamlined deployment with Cloudflare Pages integration
+
+### üêõ Bug Fixes
+- **Lightbox Integration**: Resolved MDX import issues causing visible text rendering
+- **Component Loading**: Fixed Starlight compatibility with global script approach
+- **Image Interactions**: Smooth zoom increments replacing jarring 2x jumps
+- **File Extensions**: Proper .mdx handling for component imports
+- **Search Styling**: Consistent visibility across all theme modes
+
+---
+
 ## [2.0.0] - 2025-08-29
 
-### =Ä Major Features
+### =ÔøΩ Major Features
 
 #### Starlight Documentation Framework Integration
 - **BREAKING**: Migrated from custom blog layout to professional Starlight documentation framework
@@ -24,7 +77,7 @@ All notable changes to this project will be documented in this file.
 - Added comprehensive study guides with interactive callouts and professional formatting
 - Improved content schema validation and type safety
 
-### <® UI/UX Improvements
+### <ÔøΩ UI/UX Improvements
 
 #### Interactive Content Features
 - Added Starlight callouts system (note, tip, caution, danger) for better content organization
@@ -37,7 +90,7 @@ All notable changes to this project will be documented in this file.
 - Streamlined navigation structure focused on study materials
 - Improved content discoverability with hierarchical organization
 
-### =‡ Technical Improvements
+### =ÔøΩ Technical Improvements
 
 #### Architecture Updates
 - **BREAKING**: Updated content configuration to support Starlight `docsSchema`
@@ -51,7 +104,7 @@ All notable changes to this project will be documented in this file.
 - Improved content sync process for Obsidian vault integration
 - Enhanced development workflow with better debugging capabilities
 
-### =› Content Updates
+### =ÔøΩ Content Updates
 
 #### Study Materials
 - **NEW**: Week 7 Hearsay Evidence Study Guide - Comprehensive legal analysis with:
@@ -73,13 +126,13 @@ All notable changes to this project will be documented in this file.
 - Corrected development server port conflicts
 - Fixed frontmatter validation errors in Starlight schema
 
-### =® Breaking Changes
+### =ÔøΩ Breaking Changes
 - Homepage now uses Starlight splash template instead of custom blog layout
 - Content structure reorganized for professional documentation presentation  
 - Development server port changed from 4321 to 4323
 - Content collections now require Starlight-compatible schemas
 
-### <Ø Migration Notes
+### <ÔøΩ Migration Notes
 For existing users:
 1. Run `npm install` to update dependencies
 2. Content will automatically migrate to new Starlight structure

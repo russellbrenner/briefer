@@ -22,11 +22,25 @@ export default defineConfig({
       customCss: [
         './src/styles/starlight-custom.css',
       ],
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: '/lightbox.js',
+            defer: true,
+          },
+        },
+      ],
       sidebar: [
         {
           label: 'Evidence Law (LAW20009)',
           items: [
             'law20009-week1-intro-relevance',
+            'law20009-week1-week-1-collab-notes',
+            'law20009-week2-week-2-collab-notes',
+            'law20009-week3-week-3-collab-notes',
+            'law20009-week4-week-4-collab-notes',
+            'law20009-week5-week-5-collab-notes',
             'law20009-week7-study-guide',
             'law20009-week7-hearsay-flowchart',
           ],
@@ -35,7 +49,11 @@ export default defineConfig({
           label: 'Commercial Law (LAW10013)',
           items: [
             'law10013-week1-intro-commercial-law',
+            'law10013-week1-week-1-collab-notes',
             'law10013-week2-sale-of-goods',
+            'law10013-week2-week-2-collab-notes',
+            'law10013-week3-week-3-collab-notes',
+            'law10013-week4-week-4-collab-notes',
           ],
         },
       ],

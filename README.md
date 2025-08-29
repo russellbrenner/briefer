@@ -201,6 +201,9 @@ Your note content here...
 # Sync all notes (respects OBSIDIAN_REQUIRE_PUBLISH setting)
 npm run sync:uni
 
+# Enhanced sync with automatic Starlight transformations
+npm run sync:enhanced
+
 # Force sync only published notes
 OBSIDIAN_REQUIRE_PUBLISH=true npm run sync:uni
 
@@ -390,10 +393,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Interactive Callouts**: Note, tip, caution, and danger callouts for better content organization
 - **Auto-generated Navigation**: Sidebar and table of contents generated from file structure
 - **Professional Styling**: Custom CSS for legal academic content presentation
+- **Interactive Lightbox**: Click any image to zoom (up to 8x), pan, and download original files
+- **Enhanced Typography**: Balanced dark/light themes with excellent contrast for extended reading
 
 ### Content Management
 - **Multi-source Content**: Blog posts, university notes (Obsidian sync), and Starlight docs
 - **Selective Publishing**: Only sync Obsidian notes with `publish: true` flag
+- **Automated Enhancement**: Plain Obsidian markdown automatically transformed to Starlight components
 - **Rich Typography**: Inter and Newsreader fonts for professional appearance
 - **Responsive Design**: Mobile-optimized for study on any device
 
