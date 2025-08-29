@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   output: "server",
   adapter: cloudflare({
-    imageService: "compile"
+    mode: "directory"
   }),
   image: {
     service: {

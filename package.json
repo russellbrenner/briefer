@@ -11,12 +11,14 @@
   },
   "scripts": {
     "astro": "astro",
-    "build": "astro build",
+    "build": "astro build && node scripts/post-build.mjs",
+    "build:raw": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
     "sync:uni": "node scripts/sync-obsidian.mjs",
     "sync:media": "node scripts/sync-media.mjs",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:local": "npm run build && wrangler deploy --env production"
   },
   "type": "module",
   "devDependencies": {

@@ -3,13 +3,22 @@ main = "dist/_worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+# Assets configuration
+[site]
+bucket = "./dist"
+
 [env.production]
 name = "briefer"
 
-# Optional: R2 bucket bindings for media
-# [[env.production.r2_buckets]]
-# binding = "MEDIA_BUCKET"
-# bucket_name = "briefer-media"
+# KV namespace for Cloudflare sessions (required by adapter)
+[[env.production.kv_namespaces]]
+binding = "SESSION"
+id = "277b033991aa4d3fa078a3ba494b5b07"
+
+# R2 bucket bindings for other file types (PDFs, docs, etc.)
+[[env.production.r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "briefer-media"
 
 # Optional: KV namespaces for caching
 # [[env.production.kv_namespaces]]
