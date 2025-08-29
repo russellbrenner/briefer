@@ -1,99 +1,131 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const blog = await getCollection('blog');
+const uni = await getCollection('uni');
+
+function toItem(entry, kind) {
+  const data = entry.data || {};
+  const title = data.title || entry.id || 'Untitled';
+  const href = kind === 'blog' ? `/blog/${entry.id}/` : `/uni/${entry.id}/`;
+  const date = (data.pubDate || data.date) ?? null;
+  const tags = Array.isArray(data.tags) ? data.tags : [];
+  // Ensure course and kind are represented as tags for filtering
+  const extra = [];
+  if (data.course) extra.push(data.course);
+  extra.push(kind);
+  const allTags = Array.from(new Set([...(tags || []), ...extra]));
+  return { title, href, date, tags: allTags, kind };
+}
+
+const items = [
+  ...blog.map((e) => toItem(e, 'blog')),
+  ...uni.map((e) => toItem(e, 'uni')),
+].sort((a, b) => {
+  const da = a.date ? new Date(a.date).valueOf() : 0;
+  const db = b.date ? new Date(b.date).valueOf() : 0;
+  return db - da;
+});
+
+// Build tag frequency map
+const tagCounts = new Map();
+for (const it of items) {
+  for (const t of it.tags || []) {
+    tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
+  }
+}
+const tags = Array.from(tagCounts.entries()).sort((a, b) => b[1] - a[1]);
+const max = tags.length ? Math.max(...tags.map(([, c]) => c)) : 1;
+const min = tags.length ? Math.min(...tags.map(([, c]) => c)) : 1;
+function sizeFor(count) {
+  if (max === min) return 1.2; // uniform
+  const t = (count - min) / (max - min);
+  return 0.9 + t * 1.4; // 0.9em..2.3em
+}
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			.coming-soon {
-				min-height: 100vh;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
-				padding: 2rem;
-				background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-				color: white;
-			}
-			
-			.hero {
-				max-width: 600px;
-				margin: 0 auto;
-			}
-			
-			.logo {
-				font-size: 4rem;
-				font-weight: 700;
-				margin-bottom: 1rem;
-				background: linear-gradient(45deg, #ecf0f1, #bdc3c7);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-			}
-			
-			.tagline {
-				font-size: 1.5rem;
-				margin-bottom: 2rem;
-				opacity: 0.9;
-				font-weight: 300;
-			}
-			
-			.contact-link {
-				display: inline-block;
-				margin-top: 2rem;
-				padding: 1rem 2rem;
-				background: rgba(255, 255, 255, 0.1);
-				color: white;
-				text-decoration: none;
-				border-radius: 50px;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				backdrop-filter: blur(10px);
-				transition: all 0.3s ease;
-				font-weight: 500;
-			}
-			
-			.contact-link:hover {
-				background: rgba(255, 255, 255, 0.2);
-				transform: translateY(-2px);
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-			}
-			
-			@media (max-width: 768px) {
-				.logo {
-					font-size: 3rem;
-				}
-				
-				.tagline {
-					font-size: 1.2rem;
-				}
-				
-				.contact-link {
-					padding: 0.8rem 1.5rem;
-					font-size: 0.9rem;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<main class="coming-soon">
-			<div class="hero">
-				<h1 class="logo">Briefer</h1>
-				<p class="tagline">Test Deployment Active</p>
-				<p style="margin-top: 1rem; font-size: 1rem; opacity: 0.8;">
-					Deployed: {new Date().toISOString()} ({Math.floor(Date.now() / 1000)})
-				</p>
-				<p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-					Commit: 19f6d7c - Workers deployment with auto-deploy from GitHub
-				</p>
-				<a href="mailto:enquiries@briefer.me" class="contact-link">
-					📧 Enquiries
-				</a>
-			</div>
-		</main>
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main { width: 960px; margin: 0 auto; padding: 1rem; }
+      .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1rem 0 2rem; }
+      .tag { cursor: pointer; color: rgb(var(--black)); text-decoration: none; opacity: 0.85; }
+      .tag.active { color: rgb(var(--accent)); text-decoration: underline; }
+      .feed { display: flex; flex-direction: column; gap: 1.25rem; }
+      .item { padding: 1rem; border-radius: 8px; background: rgb(var(--gray-gradient)); }
+      .item h3 { margin: 0 0 .25rem 0; }
+      .meta { color: rgb(var(--gray)); font-size: .9rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+      .badges { display: inline-flex; gap: .5rem; flex-wrap: wrap; }
+      .badge { background: rgba(0,0,0,0.05); color: rgb(var(--gray-dark)); padding: .1rem .5rem; border-radius: 999px; font-size: .8rem; }
+      @media (max-width: 720px) { main { width: auto; } }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <h1>Latest</h1>
+        <p>Single scrolling feed with tags from blog and Uni notes.</p>
+        <div class="tag-cloud" id="tagCloud" data-tags={JSON.stringify(tags)}>
+          {tags.map(([name, count]) => (
+            <a class="tag" href={`?tag=${encodeURIComponent(name)}`} style={`font-size:${sizeFor(count)}em`} data-tag={name}>
+              {name}
+            </a>
+          ))}
+        </div>
+
+        <div class="feed" id="feed">
+          {items.map((it) => (
+            <article class="item" data-tags={(it.tags || []).join('|')}>
+              <h3><a href={it.href}>{it.title}</a></h3>
+              <div class="meta">
+                {it.date && <span><FormattedDate date={it.date} /></span>}
+                <span class="badges">
+                  {(it.tags || []).map((t) => <span class="badge" data-tag={t}>{t}</span>)}
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+    <Footer />
+
+    <script is:inline>
+      (function(){
+        const params = new URLSearchParams(location.search);
+        let active = params.get('tag');
+        const cloud = document.getElementById('tagCloud');
+        const feed = document.getElementById('feed');
+        function applyFilter(){
+          for (const el of feed.querySelectorAll('.item')){
+            const tags = (el.getAttribute('data-tags')||'').split('|').filter(Boolean);
+            el.style.display = !active || tags.includes(active) ? '' : 'none';
+          }
+          for (const a of cloud.querySelectorAll('.tag')){
+            a.classList.toggle('active', a.getAttribute('data-tag') === active);
+          }
+        }
+        cloud.addEventListener('click', (e)=>{
+          const a = e.target.closest('a.tag');
+          if (!a) return;
+          e.preventDefault();
+          const tag = a.getAttribute('data-tag');
+          active = active === tag ? null : tag;
+          const url = new URL(location);
+          if (active) url.searchParams.set('tag', active); else url.searchParams.delete('tag');
+          history.replaceState(null, '', url);
+          applyFilter();
+        });
+        applyFilter();
+      })();
+    </script>
+  </body>
 </html>

@@ -1,0 +1,663 @@
+00:02-00:03
+Hello, everyone.
+
+00:03-00:04
+I hope you're well.
+
+00:04-00:12
+As we discussed in our workshop, I will talk through the anchor problem.
+
+00:13-00:17
+Bianca operates a gardening business.
+
+00:18-00:21
+She has been interested in upgrading her gardening equipment.
+
+00:21-00:25
+However, she's currently unable to afford brand new equipment
+
+00:26-00:36
+Surfing the net, she comes across a set of equipment that is selling for twenty five percent less than her local supplier's price.
+
+00:36-00:38
+A bargain, perhaps
+
+00:38-00:47
+The equipment is described on the site as follows: Brand new comprehensive set of gardening equipment
+
+00:47-00:51
+Perfect for both the casual and the professional gardener.
+
+00:51-00:53
+Limited stock.
+
+00:54-00:57
+You had me at limited stock.
+
+01:00-01:02
+Now, hang on a flash.
+
+01:13-01:20
+Bianca finds the contact details on the website, and she calls them to ask where the story is loc
+
+01:20-01:32
+She is advised that the equipment can only be ordered online, and although the website delivers for free, she orders the equipment and she receives confirmation for her purchase.
+
+01:33-01:36
+Seven days later, the equipment arrives.
+
+01:37-01:45
+The boxes are in perfect condition, and she eagerly signs for the packages before carefully carrying the boxes inside.
+
+01:45-01:51
+She opens the boxes to find that the various items of the equipment are not new.
+
+01:53-02:01
+Frustrated, she walks outside to test the hedge trimmer, but when she begins to use the hedge trimmer, the handle breaks.
+
+02:01-02:06
+My own words, oh dear, and the rest of the trimmer goes flying into a car window.
+
+02:06-02:10
+Oh, this has escalated very, very quickly.
+
+02:10-02:13
+Bianca has called the website retailer to complain.
+
+02:14-02:20
+However, they state that all liability for the quality of the product rests with the purchaser
+
+02:20-02:24
+And that she should have read the terms and conditions on the website.
+
+02:24-02:30
+Bianca is furious, so furious that she popped a colon.
+
+02:31-02:34
+Or a semicolon, perhaps.
+
+02:35-02:37
+Anyhow, this piece of punctuation.
+
+02:37-02:41
+She wants her money back and her car window fixed
+
+02:41-02:46
+Assume that the website retailer is governed by Victorian law.
+
+02:47-02:52
+So let's see what the questions are
+
+02:52-02:55
+Does the Sale of Goods Act apply?
+
+02:57-03:05
+How could Bianca prov prove that the goods were faulty on delivery, and that indeed it was not her own negligence that caused the goods to break?
+
+03:05-03:08
+or to not comply with the description.
+
+03:08-03:12
+Were the goods of merchant merchandisable quality?
+
+03:12-03:16
+Merchandible quality, say that ten times.
+
+03:16-03:22
+Can the website validly exclude the terms of the Sale of Goods Act?
+
+03:24-03:28
+Bianca may also be able to sue for damages done to the car.
+
+03:29-03:32
+Anyhow, let's go through all of this.
+
+03:32-03:34
+Let's have a chat.
+
+03:34-03:40
+And then as I said, I would look towards
+
+03:41-03:45
+your responses in the coming day or so and respond to those.
+
+03:46-03:49
+So we'll go through it in a
+
+03:49-03:58
+nonlinear fashion in terms of the questions are there, or perhaps it is linear, or perhaps I've lost my way.
+
+03:59-04:04
+Now, the Goods Act is the governing piece of legislation.
+
+04:05-04:10
+This is the Victorian legislation that we will be following.
+
+04:11-04:16
+For the Goods Act to apply, there must be a legally binding contracted sale of goods.
+
+04:17-04:19
+And you'll remember during our workshop
+
+04:19-04:27
+We talked about what constitutes a contract of sale, and this is as per section 6 of the Goods Act.
+
+04:27-04:38
+Therefore, in your responses, you would articulate what a contract of sale is, that we would need to ensure that all the elements of the contract are present.
+
+04:38-04:52
+That there is offer, that there is acceptance, that there is consideration, that intention was in play, that there is capacity, that formalities of a contract
+
+04:53-04:56
+have indeed been met.
+
+04:56-05:00
+In addition, we need to articulate what the goods are.
+
+05:00-05:05
+Remember what I said to you folks, follow the goods
+
+05:04-05:06
+Don't worry about the yellow brick road.
+
+05:07-05:08
+Follow the goods.
+
+05:09-05:14
+So we need to ensure that all elements of a contract are present
+
+05:13-05:27
+We need to look at whether there are goods there are, money in consideration, what consideration has been offered by way of money, and the property has been transferred as per the definition
+
+05:28-05:31
+in our materials and in the legislation.
+
+05:31-05:37
+Therefore, the Sale of Goods Act does apply
+
+05:38-05:45
+Considering the failure of goods to correspond with their description, the Goods Act will imply certain terms.
+
+05:45-05:49
+We discussed what we meant by implication
+
+05:50-06:03
+And these terms are implied in all contracts for the sale of goods regardless of whether or not the actual clauses of the contract that the parties have entered into, and there are some oral contracts
+
+06:03-06:16
+As well, that even if it does not say it in there, the sale of goods will imply that these terms are to be considered in the transaction between the parties.
+
+06:19-06:26
+The Goods Act, therefore, will imply certain terms for the sale of goods as per Section eighteen of the Act.
+
+06:27-06:32
+In this case, it appears that the contract for sale of the goods is by description.
+
+06:34-06:35
+Therefore
+
+06:35-06:44
+The description is part of the contract that indeed induces the other party into entering into that contract.
+
+06:44-06:48
+The goods, therefore, do not correspond with that description in the contract.
+
+06:52-06:59
+Therefore, we are on the precipice because I just wanted to use that wonderful word of a bridge.
+
+06:59-07:10
+But then we have to go to the next point, which is how could Bianca indeed prove that the goods were faulty on delivery and that she herself did not with
+
+07:09-07:15
+so much excitement like I did with one of my doors where I tried to remove the lock.
+
+07:16-07:20
+And I got so excited, I used a hammer instead of a screwdriver.
+
+07:20-07:23
+And now I need to replace the door
+
+07:23-07:27
+Excuse me, the emotion of that story just got to me.
+
+07:27-07:29
+So let's have a look.
+
+07:30-07:35
+Now, Bianca may take photos, videos of the package, of the goods
+
+07:35-07:42
+Remember all of you who have goods delivered, especially you fans of food delivery services out there like
+
+07:43-07:51
+Myself, you will often get a note that indicates that the package has been delivered with a photo.
+
+07:51-07:56
+So Bianca might take pictures, video, she might compare them to the pictures.
+
+07:57-08:03
+Remember that this was advertised as being new gardening equipment.
+
+08:03-08:11
+She'll need to reread the terms and conditions carefully from the website and in the Goods Act to see whether or not
+
+08:12-08:13
+she has any recalls.
+
+08:13-08:24
+And in this sense, if she can show, and she would need to show to lead with this type of evidence
+
+08:24-08:31
+that the goods indeed were not what was um advertised.
+
+08:31-08:33
+That's how she could prove it.
+
+08:34-08:47
+Were the goods of merchandise property quality, merchandis I could pronounce that yesterday, today I cannot were they of the type of quality that would be expected from a merchant
+
+08:50-08:58
+Now, in situations where the goods are bought by description, such as Bianca's case
+
+08:58-09:00
+So keep that in mind, folks.
+
+09:00-09:05
+Look in your fact patterns and see how the purchase comes about.
+
+09:05-09:08
+There is an implied condition, hello.
+
+09:08-09:10
+Implied condition.
+
+09:10-09:17
+Remember where we talked about the ranking of terms or
+
+09:17-09:21
+that what comes first, a condition, a warranty.
+
+09:21-09:23
+Conditions are high, it's up there, right?
+
+09:24-09:26
+It's the top of the top
+
+09:26-09:31
+So there is an implied condition that the goods are of a quality expected of a merchant.
+
+09:32-09:37
+In the case of Henry Kendall and Sons
+
+09:37-09:50
+This was a case whereby the proposition of or where the decision
+
+09:50-09:54
+implied such a condition.
+
+09:55-10:03
+If it's by implication, it therefore means that it is a foremost part.
+
+10:04-10:09
+Of the agreement, top of the pyramid.
+
+10:09-10:12
+And therefore, we say to ourselves, what can happen here?
+
+10:13-10:24
+Well, what can happen is this, that if the vendor, the merchant, has this responsibility
+
+10:24-10:29
+And Bianca can show that this responsibility has not been met.
+
+10:32-10:38
+then it would appear that they are not of a merchandise quality.
+
+10:39-10:46
+Now, folks, I'm probably sort of talking more than
+
+10:47-10:54
+Well, I won't say necessary, but I'm just trying to give this a bit of sort of, you know, like an academic sort of caffeine drink.
+
+10:54-10:59
+I'm trying to give it wings, you know, rather than just
+
+10:58-11:01
+going through a response.
+
+11:02-11:06
+Can the website validly exclude terms of the Sale of Goods Act?
+
+11:06-11:09
+Oh, we talked about this in our session as well.
+
+11:09-11:11
+Now look.
+
+11:11-11:14
+Typically, no.
+
+11:15-11:20
+However, in situations whereby
+
+11:19-11:29
+The parties agree by way of an exclusion clause in the contract that particular parts
+
+11:29-11:34
+Of the Act may be excluded, this may be the case.
+
+11:37-11:38
+However
+
+11:39-11:43
+There are circumstances as noted in which this may or may not apply.
+
+11:43-11:45
+So let's run through some of this.
+
+11:47-11:49
+The website
+
+11:50-11:54
+Can it exclude implied terms?
+
+11:54-11:56
+Implied conditions and warranties.
+
+11:56-12:01
+So remember, conditions first, warranties second in terms of the hierarchy.
+
+12:01-12:15
+may be excluded or varied by express, so written or articulated clearly, or by implication, which may include
+
+12:15-12:24
+The behaviours of the parties, agreement, so by express or implied agreement between the parties.
+
+12:27-12:31
+Here, we do not see that any of this has happened.
+
+12:33-12:37
+Now, when we're looking at remedies
+
+12:38-12:40
+Let's see.
+
+12:40-12:43
+She may be able to sue for damage.
+
+12:45-12:52
+However, we may have a question here regarding the remoteness of damage as per the broken window.
+
+12:54-13:02
+Can you draw a link between or can you say that the
+
+13:02-13:08
+Breaking of the window was the type of damage that could be related to the use of faulty goods.
+
+13:12-13:16
+And I will expand a little more for a few more moments.
+
+13:20-13:23
+So in regards to the sale of goods, just some general points.
+
+13:23-13:30
+A contract for the goods you would state is defined excuse me
+
+13:30-13:38
+where a seller transfers or agrees to transfer the property to the buyer for money consideration.
+
+13:39-13:44
+And here we would say that this occurs.
+
+13:44-13:48
+We would say that we have an agreement.
+
+13:48-13:51
+We have the goods and so forth.
+
+13:51-13:55
+Bianca ordered the equipment and she received confirmation.
+
+13:56-14:02
+So my friends, I want you to gnash, gnash your teeth on the facts
+
+14:01-14:14
+Use the facts such that you would say, with regards to the property, the property is this, with regards to intention, well
+
+14:15-14:21
+this happened with regards to the elements of a contract.
+
+14:21-14:22
+The following is true.
+
+14:23-14:26
+She ordered the equipment, she received confirmation
+
+14:26-14:31
+With regards to transfer of property, the property was transferred to her.
+
+14:32-14:34
+There's an agreement to sell.
+
+14:37-14:50
+The goods are delivered and at the time at which they're delivered, there is a transfer of both property and ownership.
+
+14:54-14:58
+Now
+
+14:58-15:05
+In keeping with the second point, again, just keep in mind, as we said earlier, that Section 18 will apply.
+
+15:07-15:18
+If the goods do not correspond with the description of the contract, the title the buyer may reject them and sue for damages.
+
+15:20-15:26
+This is only, though, in situations where the goods must be sold by description.
+
+15:27-15:31
+And the reason for that, as per Vali versus Whip
+
+15:31-15:40
+is because when you are selling by description, the buyer is not able to touch, feel, smell, see the goods.
+
+15:42-15:50
+Because the goods therefore were delivered to Bianca, and she had not had the opportunity to examine
+
+15:50-15:58
+She may argue that they're not indeed sorry, she may argue that the goods should not have been deemed to have been accepted.
+
+15:58-16:02
+So, in other words, her argument would be
+
+16:03-16:06
+They came to me, I signed for them.
+
+16:07-16:09
+However, my acceptance
+
+16:10-16:22
+should be extended to include my examination of the goods so that I, by way of my examination, can show that these goods are indeed fit for
+
+16:22-16:26
+the purpose and align with the description.
+
+16:26-16:32
+And at that point, it should be considered that they were delivered to me.
+
+16:33-16:36
+So I'm just expanding on the earlier parts.
+
+16:36-16:38
+And remember what we want here, folks.
+
+16:39-16:44
+Do your best and write your answers in full, which is why it's great to read your posts.
+
+16:44-16:45
+Argue.
+
+16:46-16:47
+the sides here.
+
+16:51-16:56
+We don't know when we're talking about what Bianca has to prove indeed.
+
+16:57-17:03
+whether or not there's damage, but the boxes were in perfect condition.
+
+17:04-17:10
+And she might try to sort of perhaps negotiate with the company to try and avoid
+
+17:09-17:11
+You know, tardy process.
+
+17:11-17:15
+And of course, you know, the winners always are the lawyers, folks.
+
+17:17-17:21
+Regarding the quality expected of a merchant.
+
+17:21-17:23
+Well, the goods are bought by description.
+
+17:23-17:24
+There's an implied condition.
+
+17:24-17:25
+We talked about that.
+
+17:26-17:33
+Now I would want you to include, therefore, what merchandable quality means, that the goods are fit for purpose
+
+17:32-17:42
+So, perhaps you would say, with regards to the matter of merchandise quality, as per the description in Henry Kendall.
+
+17:43-17:54
+And um yes, as per the description in Henry Kendall, merchantable quality would refer to the fact that the goods must be fit for purpose.
+
+17:54-18:00
+And they must be in keeping with the description for which they're normally used.
+
+18:01-18:06
+So in other words, if she used the gardening equipment to play cricket
+
+18:05-18:09
+And then she said, Well, look, you know, these are not of merchandable quality.
+
+18:09-18:12
+The counter argument would be, well, hang on a flash.
+
+18:12-18:17
+The merchandable quality of these goods refers to the ability for them
+
+18:17-18:20
+to be used for the purposes for which they have been described.
+
+18:22-18:24
+It appears that the goods were not of that quality.
+
+18:25-18:27
+The handle broke
+
+18:26-18:35
+So if you just sort of said the handle broke, I would extend your analysis to say that the handle broke
+
+18:35-18:43
+when she was using a hedge trimmer in its capacity as a hedge trimmer.
+
+18:44-18:48
+What of the twenty five percent less according to her payment?
+
+18:49-18:51
+That would be something to argue.
+
+18:51-18:57
+Could it have had some impact regarding the quality of the goods?
+
+18:58-19:00
+I would say no.
+
+19:01-19:03
+And can the website exclude the terms of sale?
+
+19:03-19:08
+Now we did talk about this being excluded by way of
+
+19:07-19:09
+express or implied agreement?
+
+19:10-19:11
+The answer remains no.
+
+19:11-19:15
+The issue involves implied conditions and warranties.
+
+19:15-19:18
+We have no evidence that this has happened here
+
+19:19-19:23
+As an implied condition that the goods will correspond with the description.
+
+19:23-19:27
+So you say to yourself, okay, now
+
+19:28-19:31
+What implied condition could be excluded?
+
+19:31-19:34
+The goods were not of merchandable quality.
+
+19:34-19:38
+This is not a condition that can be excluded by implication.
+
+19:41-19:48
+The window, as we said, can you link this to the absence of merchandising quality?
+
+19:49-20:00
+The court would need to apply the test of remoteness of damage, and the traditional test of remoteness of damage in contract law is in Hadley versus Baxendale
+
+20:00-20:03
+And we're really looking at the foreseeability.
+
+20:03-20:08
+Is it foreseeable that this type of damage
+
+20:10-20:20
+is the type of damage that would be contemplatable or within the contemplation of the parties because
+
+20:20-20:21
+Let's look at this.
+
+20:22-20:31
+To suggest that someone should be responsible for something of this nature is to suggest that it is reasonably foreseeable
+
+20:30-20:32
+for something like this to happen.
+
+20:32-20:42
+And therefore, the breaking of the window can be connected to the absence of quality of the goods that Bianca purchased.
+
+20:42-20:53
+If the connection is not there and it is too remote, then you cannot say that it is something that is able to be foreseen, and therefore
+
+20:52-20:58
+cannot be attributed to the person to whom you are saying it should be.
+
+21:00-21:05
+The loss, therefore, will only be recoverable if it's within the contemplation of the parties.
+
+21:05-21:10
+It's unlikely in this case, and it will be too far remote
+
+21:11-21:13
+All right, friends, I hope that's helped you.
+
+21:13-21:16
+I hope I haven't sort of meandered too greatly.
+
+21:16-21:19
+But that is what we have.
+
+21:19-21:24
+I shall post this, and I look forward to seeing you next week
+

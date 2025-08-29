@@ -109,20 +109,30 @@ async function syncCourse(course) {
         }
       }
       text = rewriteMarkdownLinks({ content: text, course });
-      // Ensure the course is noted in frontmatter if present
+
+      // Derive tags from vault path segments and course
+      const relDir = path.dirname(rel);
+      const dirSegments = relDir === '.' ? [] : relDir.split(path.sep).filter(Boolean);
+      const derivedTags = [course, 'uni', ...dirSegments]
+        .filter(Boolean)
+        .map((t) => t.trim())
+        .filter((t, i, a) => a.indexOf(t) === i);
+      const tagList = derivedTags.map((t) => `"${t}"`).join(', ');
+
+      // Ensure the course and tags are present in frontmatter
       if (text.startsWith('---')) {
         const end = text.indexOf('\n---', 3);
         if (end !== -1) {
           const head = text.slice(0, end);
           const body = text.slice(end + 4);
           const courseLine = /\ncourse:/i.test(head) ? '' : `\ncourse: ${course}`;
-          const tagsLine = /\ntags:/i.test(head) ? '' : `\ntags: [${course}, uni, evidence]`;
+          const tagsLine = /\ntags:/i.test(head) ? '' : `\ntags: [${tagList}]`;
           text = `${head}${courseLine}${tagsLine}\n---${body}`;
         }
       } else {
         // Add frontmatter if not present
         const title = path.basename(from, path.extname(from));
-        text = `---\ntitle: "${title}"\ncourse: ${course}\ntags: [${course}, uni, evidence]\ndate: ${new Date().toISOString().split('T')[0]}\n---\n\n${text}`;
+        text = `---\ntitle: "${title}"\ncourse: ${course}\ntags: [${tagList}]\ndate: ${new Date().toISOString().split('T')[0]}\n---\n\n${text}`;
       }
       await fs.writeFile(to, text, 'utf8');
     } else {
@@ -154,4 +164,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-

@@ -75,6 +75,15 @@ Blog posts are written in Markdown/MDX and stored in `src/content/blog/`. Each p
 - Automatic sitemap generation
 - RSS feed generation
 
+### Unified feed + tag cloud
+
+- The homepage (`/`) shows a single scrolling feed combining `blog` posts and synced `uni` notes, sorted by date.
+- A tag cloud at the top grows in size with frequency; click a tag to filter the feed (URL updates with `?tag=`).
+- Tags are read from frontmatter (`tags: [...]`). For `uni` notes synced from your Obsidian vault, tags are derived from:
+  - The course folder (e.g., `LAW20009 (Evidence)`)
+  - The folder path segments under the course (e.g., `Week 7`)
+  - The special tag `uni`
+
 ### Selectively publishing Obsidian Uni notes
 
 This repo can import a subset of your Obsidian vault (e.g. `LAW10013`, `LAW20009`) and publish them at `/uni`.
@@ -94,6 +103,7 @@ How it works:
 - Copies non-Markdown assets (images, pdfs, etc.) to `public/uni/<COURSE>/...`
 - Rewrites common image links in Markdown to reference `/uni/<COURSE>/...`
 - Adds `course: <COURSE>` to frontmatter if not present
+- Adds `tags: [<COURSE>, uni, <relative path segments>]` if no `tags` exist in frontmatter
 
 Routes:
 - Index at `/uni`
