@@ -1,0 +1,379 @@
+---
+// Image Lightbox Component for University Notes
+---
+
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-overlay">
+    <div class="lightbox-container">
+      <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+      
+      <div class="lightbox-content">
+        <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+        
+        <div class="lightbox-controls">
+          <button class="lightbox-btn lightbox-zoom-out" title="Zoom Out">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              <path d="M7 9h5v1H7z"/>
+            </svg>
+          </button>
+          
+          <span class="lightbox-zoom-level">100%</span>
+          
+          <button class="lightbox-btn lightbox-zoom-in" title="Zoom In">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+            </svg>
+          </button>
+          
+          <button class="lightbox-btn lightbox-reset" title="Reset Zoom">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+            </svg>
+          </button>
+          
+          <button class="lightbox-btn lightbox-download" title="Download Image">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .lightbox.active {
+    display: flex;
+    opacity: 1;
+  }
+  
+  .lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .lightbox-container {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  }
+  
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s ease;
+  }
+  
+  .lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+  }
+  
+  .lightbox-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .lightbox-image {
+    flex: 1;
+    max-width: 100%;
+    max-height: calc(95vh - 80px);
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: grab;
+    background: #f8f9fa;
+  }
+  
+  .lightbox-image:active {
+    cursor: grabbing;
+  }
+  
+  .lightbox-image.zoomed {
+    cursor: move;
+  }
+  
+  .lightbox-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgb(var(--cream));
+    border-top: 1px solid rgb(var(--gray-light));
+    font-family: "Inter", sans-serif;
+  }
+  
+  .lightbox-btn {
+    background: white;
+    border: 1px solid rgb(var(--gray-light));
+    color: rgb(var(--gray-dark));
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+  
+  .lightbox-btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+  .lightbox-zoom-level {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgb(var(--gray-dark));
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .lightbox-overlay {
+      padding: 1rem;
+    }
+    
+    .lightbox-container {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+    .lightbox-controls {
+      padding: 0.75rem 1rem;
+      gap: 0.75rem;
+    }
+    
+    .lightbox-btn {
+      width: 36px;
+      height: 36px;
+    }
+    
+    .lightbox-zoom-level {
+      font-size: 0.8rem;
+      min-width: 40px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxOverlay = document.querySelector('.lightbox-overlay');
+    const zoomInBtn = document.querySelector('.lightbox-zoom-in');
+    const zoomOutBtn = document.querySelector('.lightbox-zoom-out');
+    const resetBtn = document.querySelector('.lightbox-reset');
+    const downloadBtn = document.querySelector('.lightbox-download');
+    const zoomLevelSpan = document.querySelector('.lightbox-zoom-level');
+    
+    let currentZoom = 1;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let translateX = 0;
+    let translateY = 0;
+    
+    // Make all images in .prose clickable
+    document.querySelectorAll('.prose img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        openLightbox(img.src, img.alt);
+      });
+    });
+    
+    function openLightbox(src, alt) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      resetZoom();
+    }
+    
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      resetZoom();
+    }
+    
+    function updateZoom() {
+      const percentage = Math.round(currentZoom * 100);
+      zoomLevelSpan.textContent = `${percentage}%`;
+      lightboxImage.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+      lightboxImage.classList.toggle('zoomed', currentZoom > 1);
+    }
+    
+    function resetZoom() {
+      currentZoom = 1;
+      translateX = 0;
+      translateY = 0;
+      updateZoom();
+    }
+    
+    function zoomIn() {
+      currentZoom = Math.min(currentZoom * 1.3, 5);
+      updateZoom();
+    }
+    
+    function zoomOut() {
+      currentZoom = Math.max(currentZoom / 1.3, 0.5);
+      updateZoom();
+    }
+    
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = lightboxImage.src;
+      link.download = lightboxImage.alt || 'image';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
+    // Event listeners
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxOverlay.addEventListener('click', (e) => {
+      if (e.target === lightboxOverlay) closeLightbox();
+    });
+    
+    zoomInBtn.addEventListener('click', zoomIn);
+    zoomOutBtn.addEventListener('click', zoomOut);
+    resetBtn.addEventListener('click', resetZoom);
+    downloadBtn.addEventListener('click', downloadImage);
+    
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      
+      switch(e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case '+':
+        case '=':
+          e.preventDefault();
+          zoomIn();
+          break;
+        case '-':
+          e.preventDefault();
+          zoomOut();
+          break;
+        case '0':
+          e.preventDefault();
+          resetZoom();
+          break;
+      }
+    });
+    
+    // Mouse wheel zoom
+    lightboxImage.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    });
+    
+    // Drag functionality for zoomed images
+    lightboxImage.addEventListener('mousedown', (e) => {
+      if (currentZoom <= 1) return;
+      
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging || currentZoom <= 1) return;
+      
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateZoom();
+    });
+    
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+    
+    // Touch support for mobile
+    let initialDistance = 0;
+    let initialZoom = 1;
+    
+    lightboxImage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        initialDistance = getDistance(e.touches[0], e.touches[1]);
+        initialZoom = currentZoom;
+        e.preventDefault();
+      }
+    });
+    
+    lightboxImage.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        const currentDistance = getDistance(e.touches[0], e.touches[1]);
+        const scale = currentDistance / initialDistance;
+        currentZoom = Math.max(0.5, Math.min(5, initialZoom * scale));
+        updateZoom();
+        e.preventDefault();
+      }
+    });
+    
+    function getDistance(touch1, touch2) {
+      return Math.sqrt(
+        Math.pow(touch2.clientX - touch1.clientX, 2) +
+        Math.pow(touch2.clientY - touch1.clientY, 2)
+      );
+    }
+  });
+</script>

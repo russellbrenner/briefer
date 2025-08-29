@@ -1,0 +1,228 @@
+---
+export interface Props {
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+
+// Filter out h1 headings and only show h2-h4
+const tocHeadings = headings.filter(h => h.depth >= 2 && h.depth <= 4);
+---
+
+{tocHeadings.length > 0 && (
+  <nav class="toc" id="table-of-contents">
+    <div class="toc-header">
+      <h3>Contents</h3>
+      <button class="toc-toggle" aria-label="Toggle table of contents">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 9.5a.5.5 0 0 1-.5-.5V5.707L6.354 6.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 5.707V9a.5.5 0 0 1-.5.5z"/>
+        </svg>
+      </button>
+    </div>
+    <ol class="toc-list">
+      {tocHeadings.map((heading) => (
+        <li class={`toc-item toc-level-${heading.depth}`}>
+          <a href={`#${heading.slug}`} class="toc-link">
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<style>
+  .toc {
+    background: linear-gradient(135deg, rgb(var(--cream)) 0%, rgba(var(--gray-light), 0.3) 100%);
+    border: 1px solid rgb(var(--gray-light));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: sticky;
+    top: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(var(--gray), 0.2);
+  }
+  
+  .toc-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(var(--black));
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .toc-toggle {
+    background: none;
+    border: none;
+    color: rgb(var(--gray));
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+  
+  .toc-toggle:hover {
+    color: var(--accent);
+    background: rgba(var(--accent), 0.1);
+  }
+  
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .toc-item {
+    margin: 0;
+  }
+  
+  .toc-link {
+    display: block;
+    padding: 0.5rem 0;
+    color: rgb(var(--gray-dark));
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    padding-left: 0.75rem;
+    margin-left: -0.75rem;
+  }
+  
+  .toc-link:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(var(--accent), 0.05);
+    transform: translateX(4px);
+  }
+  
+  .toc-level-2 .toc-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  .toc-level-3 .toc-link {
+    padding-left: 1.5rem;
+    margin-left: -1.5rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+  
+  .toc-level-4 .toc-link {
+    padding-left: 2.25rem;
+    margin-left: -2.25rem;
+    font-weight: 400;
+    opacity: 0.7;
+    font-size: 0.85rem;
+  }
+  
+  /* Active link styling */
+  .toc-link.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(var(--accent), 0.1);
+    font-weight: 600;
+  }
+  
+  /* Collapsed state */
+  .toc.collapsed .toc-list {
+    display: none;
+  }
+  
+  .toc.collapsed .toc-toggle svg {
+    transform: rotate(180deg);
+  }
+  
+  @media (max-width: 768px) {
+    .toc {
+      position: static;
+      max-height: none;
+      margin: 1rem 0;
+    }
+    
+    .toc-toggle {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .toc-toggle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toc = document.getElementById('table-of-contents');
+    const toggle = toc?.querySelector('.toc-toggle');
+    const links = toc?.querySelectorAll('.toc-link');
+    
+    // Toggle functionality for mobile
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        toc?.classList.toggle('collapsed');
+      });
+    }
+    
+    // Active link highlighting
+    if (links) {
+      const headings = Array.from(document.querySelectorAll('h2[id], h3[id], h4[id]'));
+      
+      function updateActiveLink() {
+        let current = '';
+        
+        headings.forEach(heading => {
+          const rect = heading.getBoundingClientRect();
+          if (rect.top <= 100) {
+            current = heading.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      // Update on scroll
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink(); // Initial call
+      
+      // Smooth scroll for links
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href') || '');
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            history.pushState(null, '', link.getAttribute('href'));
+          }
+        });
+      });
+    }
+  });
+</script>
