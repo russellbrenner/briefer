@@ -4,19 +4,10 @@
 
 **Professional legal commentary and analysis by a current law student and future barrister.**
 
-## 📚 About
+## 🚀 Live Sites
 
-Briefer is a professional legal blog that provides clear, concise insights on contemporary legal issues. Written by a current law student with a passion for legal analysis and advocacy, preparing for a career as a barrister.
-
-### What to Expect
-
-- **Case Analysis**: In-depth examination of landmark cases and recent judgments
-- **Legal Commentary**: Expert analysis of legal developments and reforms
-- **Practical Insights**: Real-world applications and implications of legal principles
-
-## 🚀 Live Site
-
-**Currently deployed at**: [https://briefer.overlaynet.workers.dev](https://briefer.overlaynet.workers.dev)
+- **Primary**: [https://briefer.me](https://briefer.me)
+- **Workers**: [https://briefer.overlaynet.workers.dev](https://briefer.overlaynet.workers.dev)
 
 ## 🛠️ Built With
 
@@ -32,147 +23,328 @@ briefer/
 ├── src/
 │   ├── components/     # Reusable UI components
 │   ├── content/        # Blog posts and content
+│   │   ├── blog/       # Blog posts (markdown/mdx)
+│   │   └── uni/        # University notes (synced from Obsidian)
 │   ├── layouts/        # Page layouts
 │   ├── pages/          # Route pages
 │   └── styles/         # Global styles
 ├── public/             # Static assets
-└── dist/              # Build output
+├── scripts/            # Build and sync scripts
+├── dist/              # Build output (generated)
+├── wrangler.toml      # Cloudflare Workers configuration
+└── .github/workflows/ # GitHub Actions CI/CD
 ```
 
-## 🧞 Development Commands
+## 🚀 Complete Deployment Guide
 
-All commands are run from the root of the project:
+### Prerequisites
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:4321`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run sync:uni`     | Sync selected Obsidian Uni notes into the site   |
-| `npm run deploy`       | Deploy your production site to Cloudflare        |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+1. **Node.js** (v18+)
+2. **Git** configured with your details
+3. **Cloudflare account** with Workers enabled
+4. **Wrangler CLI** authenticated (`npx wrangler login`)
+5. **Obsidian vault** (if syncing university notes)
 
-## 🚀 Deployment
+### Initial Setup
 
-This project is configured for deployment on Cloudflare Workers:
+```bash
+# Clone the repository
+git clone https://github.com/your-username/briefer.git
+cd briefer
 
-1. **Build**: `npm run build`
-2. **Deploy**: `npm run deploy`
+# Install dependencies
+npm install
 
-The site deploys to Cloudflare Workers with:
-- ✅ Global CDN distribution
-- ✅ Automatic HTTPS
-- ✅ Edge computing capabilities
-- ✅ Built-in analytics
+# Configure Git for privacy (optional)
+git config user.name "Your Preferred Name"
+git config user.email "your-email@example.com"
+```
+
+### Environment Configuration
+
+Set up environment variables for Obsidian sync:
+
+```bash
+# In your shell profile (.bashrc, .zshrc, etc.)
+export OBSIDIAN_UNI_PATH="/path/to/your/Obsidian/Uni"
+export OBSIDIAN_COURSES="LAW10013,LAW20009"  # Comma-separated list
+export OBSIDIAN_REQUIRE_PUBLISH=true  # Only sync notes with publish: true
+```
+
+### Development Workflow
+
+```bash
+# 1. Start development server
+npm run dev
+# Opens at http://localhost:4321
+
+# 2. Sync university notes (if applicable)
+npm run sync:uni
+
+# 3. Test local build
+npm run build
+npm run preview
+```
+
+### Production Deployment
+
+#### Method 1: Automated (GitHub Actions)
+
+1. **Push to main branch** - deployment happens automatically:
+```bash
+git add -A
+git commit -m "Your commit message"
+git push origin main
+```
+
+2. **Monitor deployment** at https://github.com/your-username/briefer/actions
+
+#### Method 2: Manual Deployment
+
+```bash
+# Complete build and deploy
+npm run deploy
+
+# Or step by step
+npm run build
+npx wrangler deploy --env production
+```
 
 ## 📝 Content Management
 
-Blog posts are written in Markdown/MDX and stored in `src/content/blog/`. Each post includes:
+### Blog Posts
 
-- Frontmatter with metadata (title, date, description)
-- Markdown content with support for MDX components
-- Automatic sitemap generation
-- RSS feed generation
+Create files in `src/content/blog/` with this structure:
 
-### Unified feed + tag cloud
+```markdown
+---
+title: "Your Post Title"
+description: "Brief description"
+pubDate: "2025-08-29"
+tags: ["legal", "analysis"]
+---
 
-- The homepage (`/`) shows a single scrolling feed combining `blog` posts and synced `uni` notes, sorted by date.
-- A tag cloud at the top grows in size with frequency; click a tag to filter the feed (URL updates with `?tag=`).
-- Tags are read from frontmatter (`tags: [...]`). For `uni` notes synced from your Obsidian vault, tags are derived from:
-  - The course folder (e.g., `LAW20009 (Evidence)`)
-  - The folder path segments under the course (e.g., `Week 7`)
-  - The special tag `uni`
-
-### Selectively publishing Obsidian Uni notes
-
-This repo can import a subset of your Obsidian vault (e.g. `LAW10013`, `LAW20009`) and publish them at `/uni`.
-
-- Source vault path: set `OBSIDIAN_UNI_PATH` (defaults to `/Users/rbrenner/Obsidian/Uni`).
-- Included courses: set `OBSIDIAN_COURSES` as a comma list (defaults to `LAW10013,LAW20009`).
-- Optional per-note flag: set `OBSIDIAN_REQUIRE_PUBLISH=true` to only include notes with `publish: true` in frontmatter.
-
-Commands:
-
-```
-OBSIDIAN_UNI_PATH="/Users/rbrenner/Obsidian/Uni" npm run sync:uni
+Your content here...
 ```
 
-How it works:
-- Copies Markdown notes to `src/content/uni/<COURSE>/...`
-- Copies non-Markdown assets (images, pdfs, etc.) to `public/uni/<COURSE>/...`
-- Rewrites common image links in Markdown to reference `/uni/<COURSE>/...`
-- Adds `course: <COURSE>` to frontmatter if not present
-- Adds `tags: [<COURSE>, uni, <relative path segments>]` if no `tags` exist in frontmatter
+### University Notes (Obsidian Integration)
 
-Routes:
-- Index at `/uni`
-- Per-note pages at `/uni/<course>/<path-to-note>`
+#### Obsidian Note Requirements
 
-Notes:
-- For robust Obsidian-to-Markdown conversion (wiki links, embeds), consider using the `obsidian-export` CLI and running it before `sync:uni`.
+For a note to be published, it must have this frontmatter:
 
-## 🎨 Customization
+```yaml
+---
+publish: true
+title: "Week 7 - Study Guide: Hearsay Evidence"
+course: LAW20009  # Optional - auto-added if missing
+tags:             # Optional - auto-generated if missing
+  - LAW20009
+  - evidence
+  - hearsay
+  - study-guide
+  - week7
+  - uni
+---
 
+Your note content here...
+```
 
-The site uses a custom design system with:
-- Professional legal-themed color scheme
-- Responsive design for all devices
-- Modern typography and spacing
-- Glassmorphism UI elements
+#### Obsidian Folder Structure
 
-## 🧩 Add a new static page (About)
+```
+/Users/your-username/Obsidian/Uni/
+├── LAW20009/
+│   ├── Week 7/
+│   │   ├── Week 7 - Study Guide.md     # ✅ publish: true
+│   │   ├── Week 7 Canvas.md            # ❌ no publish flag
+│   │   └── Week 7 Flow Chart.md        # ❌ publish: false
+│   └── Cases/
+│       └── Important Case.pdf          # Auto-moved to R2
+└── LAW10013/
+    └── Week 1/
+        └── Introduction.md             # ❌ no publish flag
+```
 
-Create a simple static page at `/about` using MDX. This does not require any data sources or collections.
+#### Sync Commands
 
-1. Create the file `src/pages/about.mdx` with the following content:
+```bash
+# Sync all notes (respects OBSIDIAN_REQUIRE_PUBLISH setting)
+npm run sync:uni
 
-   ```mdx
-   ---
-   title: "About"
-   description: "About Briefer — professional legal commentary and analysis"
-   ---
+# Force sync only published notes
+OBSIDIAN_REQUIRE_PUBLISH=true npm run sync:uni
 
-   import BaseLayout from "../layouts/BaseLayout.astro";
+# Sync specific path
+OBSIDIAN_UNI_PATH="/custom/path" npm run sync:uni
+```
 
-   <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-     <h1>About Briefer</h1>
-     <p><strong>Briefer</strong> is a professional legal blog providing clear, concise insights on contemporary legal issues. It is written by a current law student preparing for practice at the Victorian Bar.</p>
+## 🔧 Build and Deploy Procedures
 
-     <h2>Focus</h2>
-     <ul>
-       <li>Case analysis: landmark authorities and recent judgments</li>
-       <li>Legal commentary: developments, reforms, and practical implications</li>
-       <li>Practice-oriented notes: statutes, principles, and quick references</li>
-     </ul>
+### Clean Deployment Process
 
-     <h2>Editorial approach</h2>
-     <p>Plain language, rigorous sourcing (AGLC4 where applicable), and pragmatic context for students and practitioners.</p>
+When experiencing caching issues, follow this complete reset:
 
-     <h2>Contact</h2>
-     <p>Connect on <a href="https://linkedin.com/in/russellbrenner">LinkedIn</a> or email <a href="mailto:russ@briefer.me">russ@briefer.me</a>.</p>
-   </BaseLayout>
-   ```
+```bash
+# 1. Clear all caches
+rm -rf .astro dist node_modules/.astro
 
-2. Start the dev server and visit `http://localhost:4321/about`:
+# 2. Clear content and re-sync
+rm -rf src/content/uni
+OBSIDIAN_REQUIRE_PUBLISH=true npm run sync:uni
 
-   ```bash
-   npm run dev
-   ```
+# 3. Verify content
+find src/content -name "*.md" -o -name "*.mdx"
 
-3. Deploy as usual when satisfied:
+# 4. Clean build
+npm run build
 
-   ```bash
-   npm run build && npm run deploy
-   ```
+# 5. Deploy
+npx wrangler deploy --env production
 
-### Notes
-- If your project does not include `src/layouts/BaseLayout.astro`, replace the MDX layout import and wrapper with plain Markdown (keep the frontmatter). Astro will render the page at `/about` automatically.
-- To add a navigation link, update your header/nav component under `src/components/` to include an anchor to `/about`.
+# 6. Commit state
+git add -A
+git commit -m "Clean deployment with verified content"
+git push
+```
 
+### Troubleshooting Cache Issues
 
-- **LinkedIn**: [Russell Brenner](https://linkedin.com/in/russellbrenner)
-- **Email**: [russ@briefer.me](mailto:russ@briefer.me)
+If old content persists after deployment:
+
+1. **Clear browser cache**: Hard refresh (Ctrl+F5 / Cmd+Shift+R)
+2. **Try incognito mode**: Bypasses all local caches
+3. **Different browser/device**: Rule out browser-specific issues
+4. **Mobile hotspot**: Rule out DNS/ISP caching
+5. **Wait 5-10 minutes**: CDN propagation time
+6. **Force cache refresh**: Add `?v=timestamp` to URL
+
+### GitHub Actions Deployment
+
+The automated deployment runs on every push to `main`:
+
+```yaml
+# .github/workflows/deploy.yml
+- Build with Node.js 20
+- Install dependencies with npm ci
+- Run npm run build
+- Deploy to Cloudflare Workers
+```
+
+**Monitoring deployments:**
+- GitHub: https://github.com/your-username/briefer/actions
+- Cloudflare: https://dash.cloudflare.com/workers
+
+## 🚨 Common Issues & Solutions
+
+### Issue: "HTTP ERROR 500" on site
+
+**Causes:**
+- CDN caching stale content
+- Browser caching old version
+- DNS propagation delay
+
+**Solutions:**
+1. Hard refresh browser (Ctrl+F5)
+2. Clear browser data completely
+3. Try incognito mode
+4. Wait 10-15 minutes for CDN
+5. Try accessing worker URL directly
+
+### Issue: Old blog posts still appearing
+
+**Causes:**
+- Cached build artifacts
+- Content not properly removed from source
+
+**Solutions:**
+```bash
+# Clear everything and rebuild
+rm -rf .astro dist node_modules/.astro src/content/blog/*
+npm run build
+npx wrangler deploy --env production
+```
+
+### Issue: Obsidian sync not working
+
+**Causes:**
+- Path doesn't exist
+- No notes have `publish: true`
+- Environment variables not set
+
+**Solutions:**
+```bash
+# Check path exists
+ls -la "$OBSIDIAN_UNI_PATH"
+
+# Check for published notes
+grep -r "publish: true" "$OBSIDIAN_UNI_PATH"
+
+# Debug sync
+OBSIDIAN_REQUIRE_PUBLISH=true npm run sync:uni
+find src/content/uni -name "*.md"
+```
+
+### Issue: Wrangler authentication
+
+```bash
+# Re-authenticate
+npx wrangler logout
+npx wrangler login
+
+# Check auth
+npx wrangler whoami
+```
+
+## 🎯 Content Publishing Workflow
+
+### For University Notes
+
+1. **Create note in Obsidian** with `publish: true` frontmatter
+2. **Sync to project**: `npm run sync:uni`
+3. **Test locally**: `npm run dev`
+4. **Deploy**: `git push` (auto-deploys) or `npm run deploy`
+
+### For Blog Posts
+
+1. **Create markdown file** in `src/content/blog/`
+2. **Add frontmatter** with title, date, description, tags
+3. **Test locally**: `npm run dev`
+4. **Deploy**: `git push` or `npm run deploy`
+
+## 🔍 Debugging Commands
+
+```bash
+# Check content structure
+find src/content -type f -name "*.md" -o -name "*.mdx" | head -20
+
+# Verify Obsidian sync
+grep -l "publish: true" src/content/uni/**/*.md
+
+# Test build without deploy
+npm run build:raw  # Builds without post-processing
+npm run preview    # Preview build locally
+
+# Check Wrangler config
+npx wrangler whoami
+npx wrangler deployments list --env production
+
+# Monitor live logs (during deployment testing)
+npx wrangler tail briefer --env production --format pretty
+```
+
+## 🌐 Domain Configuration
+
+- **briefer.me** → Cloudflare Workers custom domain
+- **briefer.overlaynet.workers.dev** → Default Workers subdomain
+
+Both serve the same content with global CDN caching.
+
+## 📊 Analytics & Monitoring
+
+- **Cloudflare Analytics**: Built-in traffic and performance metrics
+- **GitHub Actions**: Deployment success/failure notifications
+- **Wrangler Logs**: Real-time error monitoring
 
 ## 📄 License
 
@@ -181,3 +353,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ by a future barrister**
+
+*Last updated: August 29, 2025*
