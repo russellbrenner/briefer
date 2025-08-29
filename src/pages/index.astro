@@ -56,15 +56,15 @@ function sizeFor(count) {
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
       main { width: 960px; margin: 0 auto; padding: 1rem; }
-      .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem .75rem; margin: 1rem 0 2rem; }
-      .tag { cursor: pointer; color: rgb(var(--black)); text-decoration: none; opacity: 0.9; border-bottom: 2px solid transparent; }
-      .tag.active { color: var(--accent); text-decoration: none; border-bottom-color: var(--accent); }
+      .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1rem 0 2rem; }
+      .tag { cursor: pointer; color: rgb(var(--black)); text-decoration: none; opacity: 0.85; }
+      .tag.active { color: rgb(var(--accent)); text-decoration: underline; }
       .feed { display: flex; flex-direction: column; gap: 1.25rem; }
-      .item { padding: 1rem 1.25rem; border-radius: 10px; background: rgb(var(--gray-gradient)); box-shadow: var(--box-shadow); }
-      .item h3 { margin: 0 0 .25rem 0; font-family: var(--serif); }
+      .item { padding: 1rem; border-radius: 8px; background: rgb(var(--gray-gradient)); }
+      .item h3 { margin: 0 0 .25rem 0; }
       .meta { color: rgb(var(--gray)); font-size: .9rem; display: flex; gap: .75rem; flex-wrap: wrap; }
       .badges { display: inline-flex; gap: .5rem; flex-wrap: wrap; }
-      .badge { background: rgba(0,0,0,0.04); color: rgb(var(--gray-dark)); padding: .1rem .5rem; border-radius: 999px; font-size: .8rem; }
+      .badge { background: rgba(0,0,0,0.05); color: rgb(var(--gray-dark)); padding: .1rem .5rem; border-radius: 999px; font-size: .8rem; }
       @media (max-width: 720px) { main { width: auto; } }
     </style>
   </head>
