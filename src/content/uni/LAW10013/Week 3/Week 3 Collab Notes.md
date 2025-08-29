@@ -1,0 +1,250 @@
+---
+publish: true
+course: LAW10013
+tags: ["LAW10013", "uni", "Week 3"]
+---
+# Week 3 – International Sales Contracts (Part 1)
+*Subject: LAW10013 – Commercial Law*
+*Lecturer: Nick Nicolopoulos*
+*Date: TP2 2025*
+*Materials: Transcript + Slides*
+
+---
+
+## Overview
+
+**Topic Summary**
+This week introduced the *United Nations Convention on Contracts for the International Sale of Goods* (‘Vienna Convention’ or ‘CISG’), focusing on formation, performance, conformity, third-party claims, and remedies. The Convention’s application in international contracts was examined alongside Australian private international law principles to determine proper jurisdiction. Key differences from Australian common law include the non-requirement for consideration and the admissibility of parol evidence. Stacey's rug import scenario was used to contextualise the rules on conformity, acceptance, and remedies.
+
+---
+
+## Key Concepts and Legal Doctrines
+
+### 1. Vienna Convention – Application and Interpretation
+**Definition / Scope**
+Applies to contracts for sale of goods between parties whose places of business are in different Convention countries (*Art 1(1)(a)*), or where the applicable law is that of a Convention country (*Art 1(1)(b)*).
+
+**Exclusions – Art 2**
+Does not apply to:
+- Personal/household goods
+- Auctions
+- Legal sales
+- Securities, currency
+- Ships, aircraft, hovercraft
+- Electricity
+
+**Interpretation – Art 7(1)**
+- Must promote uniformity
+- Avoid reliance on domestic legal concepts
+- Foreign case law may be considered
+
+**Lecturer Notes**
+- Emphasised Australia is a signatory; Indonesia is not [oai_citation:0‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+- Where no agreement on jurisdiction exists, apply *Art 1(1)(b)* using private international law
+
+---
+
+### 2. Formation of International Contracts
+**Elements / Test (Art 23)**
+- Agreement (offer + acceptance)
+- Intention to be bound
+- *No requirement for consideration*
+
+**Parol Evidence (Art 8 & 11)**
+- Statements and conduct can evidence intent
+- Admissible even to vary a written contract
+- No writing requirement unless excluded by a party’s domestic law
+
+**Lecturer Notes**
+- Used ‘cravat’ example to illustrate oral statements evidencing contractual terms
+- Contrasted Australian common law's strict approach to written contracts with CISG’s flexibility [oai_citation:1‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+
+---
+
+### 3. Conformity of Goods
+**Definition / Scope – Art 35**
+Goods must:
+- Match quantity, quality, and description
+- Be fit for ordinary and disclosed purposes
+- Match sample provided
+- Be adequately packaged
+- Meet standards of the seller’s country (unless otherwise disclosed)
+
+**Authority**
+- *Smallmon v Transport Sales Ltd* (2012) – Seller unaware of buyer’s jurisdiction standards; NZ trucks not registrable in Australia
+  – Citation: *Smallmon v Transport Sales Ltd* [2012] [Turner & Trone, para 4.150]
+
+**Lecturer Notes**
+- Discussion of goods with defects (e.g. rugs with loose threads) may still technically meet "fitness" but fail on quality grounds [oai_citation:2‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+
+---
+
+### 4. Examination and Notification
+**Requirements – Arts 38–39**
+- Buyer must inspect goods within the shortest practicable time
+- Must notify seller of non-conformity within a reasonable time after discovery or when they ought to have known
+
+**Lecturer Notes**
+- Two-week delay may jeopardise Stacey's ability to reject goods, but not her claim for damages [oai_citation:3‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+
+---
+
+### 5. Third-Party Claims
+**Rules – Arts 41–42**
+- Goods must be free from claims by others
+- Applies to intellectual property as well
+- Buyer may accept goods subject to such claims
+
+**Lecturer Notes**
+- Linked to PPSR and registering securities; third-party rights can invalidate sale if not disclosed
+
+---
+
+### 6. Performance and Risk
+**Buyer Obligations – Arts 53–54**
+- Pay as agreed and facilitate payment
+- Delivery and payment concurrent unless otherwise agreed
+
+**Risk – Art 66**
+- Once risk passes, buyer bears loss/damage (unless caused by seller)
+
+**Preservation Duties – Arts 85–86**
+- Duty on both parties to preserve goods in rejection or delay scenarios
+
+**Lecturer Notes**
+- Risk may pass without possession
+- Title ≠ possession
+
+---
+
+### 7. Exemptions and Breach
+**Exemption – Art 79(1)**
+- Party not liable if performance impossible due to unforeseeable impediment
+- Mere unprofitability not sufficient
+
+**Fundamental Breach – Art 25**
+- Must substantially deprive buyer of expected benefit
+- Non-payment generally qualifies: *Downs Investments v Perwaja Steel* (2002)
+  – Citation: *Downs Investments Pty Ltd (in liq) v Perwaja Steel* [2002] [Turner & Trone, para 4.310]
+
+**Anticipatory Breach – Art 71(1)**
+- Party may suspend performance if substantial breach appears likely
+
+---
+
+### 8. Remedies
+**Buyer’s Remedies – Art 45**
+- Require performance
+- Seek additional time
+- Demand remedy for nonconformity
+- Avoid contract
+- Claim damages
+
+**Seller’s Remedies – Art 61**
+- Same as above (mirrored)
+
+**Avoidance – Art 81**
+- Requires express declaration
+- Releases obligations but preserves some contractual effects
+
+**Damages – Art 74**
+- Must be foreseeable and measurable with certainty
+- Can include lost profits
+
+---
+
+## IRAC Case Summaries
+
+### Case: *Smallmon v Transport Sales Ltd* (2012)
+
+| Element     | Detail |
+|-------------|--------|
+| **Issue**   | Whether seller had to comply with buyer’s domestic standards |
+| **Rule**    | Seller must meet own country’s standards unless aware of buyer’s requirements |
+| **Application** | Trucks sold by NZ dealer not registrable in Australia |
+| **Conclusion**  | Buyer could not recover; seller not aware of foreign standards |
+| **Ratio**   | Fitness for purpose assessed using seller’s domestic legal standards unless otherwise agreed |
+
+---
+
+### Case: *Downs Investments Pty Ltd (in liq) v Perwaja Steel* (2002)
+
+| Element     | Detail |
+|-------------|--------|
+| **Issue**   | Whether failure to pay under CISG amounts to fundamental breach |
+| **Rule**    | Fundamental breach substantially deprives the other party of contractual benefit |
+| **Application** | Non-payment held to substantially defeat contract purpose |
+| **Conclusion**  | Breach deemed fundamental |
+| **Ratio**   | Non-payment is ordinarily a fundamental breach under the Convention
+
+---
+
+## Worked Examples
+
+### Problem: Stacey’s Rug Imports
+**Facts**
+Contract signed for 100 rugs/month for 3 years. Pre-contract emails show intention for high variety and quality. First shipment defective; limited variety. Goods stored unopened for two weeks.
+
+**Issue(s)**
+- Does CISG apply despite Greg being in Indonesia?
+- Can Stacey rely on pre-contract emails under CISG?
+- Were goods conforming (Art 35)?
+- Did delay in inspection (2 weeks) bar remedies under Art 38/39?
+- What remedies are available?
+
+**Lecturer’s Reasoning**
+- *Art 1(1)(b)* applies as Australia is a signatory; CISG incorporated into *International Sale of Goods (Vienna Convention) Act 1987 (Cth)* [oai_citation:4‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+- Parol evidence is admissible (Art 8, 11)
+- Variety and quality failed (Art 35(1), (2)); rugs tattered, limited designs
+- 2-week delay may reduce remedies, but not bar damages claim (Art 38–39)
+- Buyer may seek to avoid contract and recover first payment (Arts 45–46, 74)
+
+**Answer Summary**
+✓ CISG applies (Australia = party; Art 1(1)(b))
+✓ Emails admissible; show pre-contract representations (Art 8)
+✗ Goods not conforming to contract (Art 35)
+✗ Delay in inspection may affect extent of remedies
+✓ Stacey may rescind contract, seek refund, and claim damages [oai_citation:5‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+
+---
+
+## Practical Exam and Study Tips
+
+**IRAC Structuring**
+- Identify jurisdiction and Convention applicability first
+- Use Art 35 to assess conformity
+- Track buyer behaviour (delay in inspection, retention, etc.)
+- Frame breach as fundamental if remedy sought is avoidance
+
+**Memory Aids / Mnemonics**
+- AID: *Agreement*, *Intention*, *(no) Consideration* (formation under CISG)
+- PACE: *Performance*, *Acceptance*, *Conformity*, *Examination*
+
+**Warnings**
+- Remedies under CISG not automatic; must be declared
+- Domestic law does not override CISG where applicable
+- Damages must be foreseeable and certain
+
+---
+
+## Supplementary Reading and References
+
+**Cases Mentioned (AGLC4 format)**
+- *Smallmon v Transport Sales Ltd* [2012] [Turner & Trone, para 4.150]
+- *Downs Investments Pty Ltd (in liq) v Perwaja Steel* [2002] [Turner & Trone, para 4.310]
+- *Amin Rasheed Shipping Corp v Kuwait Insurance Co* [1984] AC 50
+- *Bonython v Commonwealth* (1951) 83 CLR 486
+
+**Legislation**
+- *United Nations Convention on Contracts for the International Sale of Goods* (Vienna Convention)
+- *International Sale of Goods (Vienna Convention) Act 1987* (Cth)
+
+**Other Sources**
+- LAW10013 Week 3 Slides
+- Lecture and tutorial discussion [oai_citation:6‡LAW20009 Collab Transcript Week 3.txt](file-service://file-XoeGiBtFMeY3rqRPRirB4U)
+
+---
+
+## Open Questions or Clarifications
+- How would choice of law clauses override default CISG rules in future contracts?
+- Can a party pre-emptively opt out of CISG in a cross-border B2B agreement?

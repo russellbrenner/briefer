@@ -1,0 +1,198 @@
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal">
+  <span class="lightbox-close">&times;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-image" class="lightbox-image" />
+    <div class="lightbox-controls">
+      <button id="download-btn">📥 Download</button>
+      <span id="zoom-level">100%</span>
+      <button id="zoom-in">🔍+ Zoom In</button>
+      <button id="zoom-out">🔍- Zoom Out</button>
+      <button id="reset-zoom">↻ Reset</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentZoom = 1;
+  let currentImageSrc = '';
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let imageX = 0;
+  let imageY = 0;
+
+  // Initialize lightbox when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeLightbox();
+  });
+
+  function initializeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const downloadBtn = document.getElementById('download-btn');
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+    const resetZoomBtn = document.getElementById('reset-zoom');
+
+    // Add click handlers to all images in content
+    const images = document.querySelectorAll('.sl-markdown-content img');
+    images.forEach(img => {
+      img.addEventListener('click', function() {
+        openLightbox(this);
+      });
+    });
+
+    // Close button
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Click outside to close
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeLightbox();
+      }
+    });
+
+    // Control buttons
+    downloadBtn.addEventListener('click', downloadImage);
+    zoomInBtn.addEventListener('click', zoomIn);
+    zoomOutBtn.addEventListener('click', zoomOut);
+    resetZoomBtn.addEventListener('click', resetZoom);
+
+    // Keyboard controls
+    document.addEventListener('keydown', function(e) {
+      if (modal.style.display === 'block') {
+        switch(e.key) {
+          case 'Escape':
+            closeLightbox();
+            break;
+          case '+':
+          case '=':
+            zoomIn();
+            break;
+          case '-':
+            zoomOut();
+            break;
+          case '0':
+            resetZoom();
+            break;
+        }
+      }
+    });
+
+    // Add panning functionality
+    lightboxImg.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', endDrag);
+    
+    // Wheel zoom
+    lightboxImg.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    });
+  }
+
+  function openLightbox(img) {
+    const modal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-image');
+    
+    currentImageSrc = img.src;
+    lightboxImg.src = currentImageSrc;
+    currentZoom = 1;
+    imageX = 0;
+    imageY = 0;
+    lightboxImg.style.transform = `scale(${currentZoom}) translate(${imageX}px, ${imageY}px)`;
+    lightboxImg.classList.remove('zoomed');
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    currentZoom = 1;
+  }
+
+  function zoomIn() {
+    currentZoom = Math.min(currentZoom * 2, 8); // Bigger zoom increments, max 8x
+    updateZoom();
+  }
+
+  function zoomOut() {
+    currentZoom = Math.max(currentZoom / 2, 0.25); // Bigger zoom decrements, min 0.25x
+    updateZoom();
+  }
+
+  function resetZoom() {
+    currentZoom = 1;
+    updateZoom();
+  }
+
+  function updateZoom() {
+    const lightboxImg = document.getElementById('lightbox-image');
+    const zoomLevel = document.getElementById('zoom-level');
+    
+    lightboxImg.style.transform = `scale(${currentZoom}) translate(${imageX}px, ${imageY}px)`;
+    zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+    
+    // Enable panning when zoomed in
+    if (currentZoom > 1) {
+      lightboxImg.classList.add('zoomed');
+      lightboxImg.style.cursor = 'grab';
+    } else {
+      lightboxImg.classList.remove('zoomed');
+      lightboxImg.style.cursor = 'zoom-in';
+      imageX = 0;
+      imageY = 0;
+    }
+  }
+
+  function startDrag(e) {
+    if (currentZoom > 1) {
+      isDragging = true;
+      dragStartX = e.clientX - imageX;
+      dragStartY = e.clientY - imageY;
+      e.preventDefault();
+    }
+  }
+
+  function drag(e) {
+    if (isDragging && currentZoom > 1) {
+      imageX = e.clientX - dragStartX;
+      imageY = e.clientY - dragStartY;
+      updateZoom();
+    }
+  }
+
+  function endDrag() {
+    isDragging = false;
+  }
+
+  function downloadImage() {
+    if (currentImageSrc) {
+      // Extract original filename from src
+      const urlParts = currentImageSrc.split('/');
+      const originalFilename = urlParts[urlParts.length - 1];
+      
+      // Create download link for original image
+      const link = document.createElement('a');
+      link.href = currentImageSrc;
+      link.download = originalFilename || 'image.png';
+      link.target = '_blank'; // Ensures original file is downloaded
+      
+      // Force download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      console.log(`Downloading original image: ${originalFilename}`);
+    }
+  }
+</script>

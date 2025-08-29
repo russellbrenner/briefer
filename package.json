@@ -7,6 +7,7 @@
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.4.1",
     "@astrojs/starlight": "^0.35.2",
+    "@cloudflare/kv-asset-handler": "^0.4.0",
     "astro": "5.10.1",
     "typescript": "5.8.3"
   },
@@ -17,6 +18,7 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "sync:uni": "node scripts/sync-obsidian.mjs",
+    "sync:enhanced": "node scripts/sync-and-enhance.mjs",
     "sync:media": "node scripts/sync-media.mjs",
     "deploy": "npm run build && wrangler deploy",
     "deploy:local": "npm run build && wrangler deploy --env production"

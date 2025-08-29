@@ -44,3 +44,6 @@ public/uni/**/Collaboration Sessions/*.mp4
 
 # Ignore all synced vault assets (handled at runtime / R2)
 public/uni/
+
+# Build cleanup log
+build-cleanup.log

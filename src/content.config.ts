@@ -16,8 +16,6 @@ const blog = defineCollection({
   }),
 });
 
-// Note collections
-
 // Additional collection for selectively-published Obsidian notes
 const uni = defineCollection({
   loader: glob({ base: "./src/content/uni", pattern: "**/*.md" }),
@@ -31,9 +29,13 @@ const uni = defineCollection({
   }).passthrough(),
 });
 
-// Starlight docs collection
+// Starlight docs collection - will be populated with filtered Obsidian content
 const docs = defineCollection({ 
-  schema: docsSchema() 
+  schema: docsSchema({
+    extend: z.object({
+      publish: z.boolean().optional(),
+    }),
+  })
 });
 
 export const collections = { blog, uni, docs };

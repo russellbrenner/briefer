@@ -1,7 +1,8 @@
 ---
 title: "Week 7 Study Guide: Hearsay Evidence"
-description: "Comprehensive study guide covering hearsay evidence rules, exceptions, and key cases under the Uniform Evidence Laws. Includes quiz questions and glossary."
+description: "Comprehensive study guide covering hearsay evidence principles, exceptions, and applications under the Uniform Evidence Laws"
 sidebar:
+  label: "Hearsay Evidence"
   order: 1
 ---
 
@@ -26,131 +27,103 @@ By the end of your review, you should be able to:
 
 ### 1. Defining Hearsay Evidence (s 59)
 
-:::note[Definition]
-Evidence of a statement of fact offered to a court by a person who did not personally witness or experience what they are describing, used to assert the truth of what is being asserted.
-:::
-
-**Distinction from Original Evidence:**
-- **Hearsay (Testimonial Use):** Offered to prove the _truth_ of the statement's contents. 
-  - Example: X tells the court that A told X that A saw B hit C, to prove B hit C.
-- **Original Evidence (Non-Hearsay Use):** Offered to prove _the fact that the statement was made_, regardless of its truth. 
-  - Example: X tells the court that A told X that A saw B hit C, to prove A made the statement (e.g., in a defamation case where the fact of the statement itself is relevant).
-
-:::tip[Key Concept]
-**"Previous Representation":** Defined broadly to include express/implied, oral/written, inferred from conduct, and even unintended representations (e.g., a diary entry not meant for others).
-:::
+- **Definition:** Evidence of a statement of fact offered to a court by a person who did not personally witness or experience what they are describing, used to assert the truth of what is being asserted.
+- **Distinction from Original Evidence:Hearsay (Testimonial Use):** Offered to prove the _truth_ of the statement's contents. Example: X tells the court that A told X that A saw B hit C, to prove B hit C.
+- **Original Evidence (Non-Hearsay Use):** Offered to prove _the fact that the statement was made_, regardless of its truth. Example: X tells the court that A told X that A saw B hit C, to prove A made the statement (e.g., in a defamation case where the fact of the statement itself is relevant).
+- **"Previous Representation":** Defined broadly to include express/implied, oral/written, inferred from conduct, and even unintended representations (e.g., a diary entry not meant for others).
 
 ### 2. Rationale for Inadmissibility
-
-The hearsay rule exists due to four key concerns:
 
 - **Unreliability:** Information passed from person to person can become inaccurate.
 - **Lack of Oath:** The original witness's statement was not given under oath.
 - **No Cross-Examination:** The original witness cannot be cross-examined to test their perception, memory, narration skills, or sincerity.
 - **Inability to Assess Demeanour:** The fact-finder cannot assess the credibility of the original witness.
+- **Four Testimonial Infirmities (Morgan):** Ambiguity, insincerity, faulty perception, erroneous memory.
 
-:::caution[Morgan's Four Testimonial Infirmities]
-Ambiguity, insincerity, faulty perception, erroneous memory.
-:::
+### 3. Key Exceptions to the Hearsay Rule (Uniform Laws)
 
-## Key Exceptions to the Hearsay Rule
+#### a) Evidence Relevant for a Non-Hearsay Purpose (s 60)
 
-### Evidence Relevant for a Non-Hearsay Purpose (s 60)
+- If a previous representation is admitted for a purpose other than proving an asserted fact (original use), it can _also_ be used as evidence of the truth of the asserted fact (hearsay purpose).
+- **Impact of _Lee v The Queen_ (1998):** Originally restricted s 60's application to first-hand assertions made by the declarant, not to second-hand (what A heard B say). This has since been _overruled by s 60(2)_, meaning second-hand and more remote hearsay can be admitted for its truth if there's an original use.
+- **Examples of original uses:** Prior inconsistent statements, prior consistent statements, factual basis of expert opinions.
+- **Limitations:**Testimonial use must be beneficial.
+- Assertion of fact must be relevant (s 55).
+- Judicial discretions (ss 135, 136, 137) can still apply.
 
-If a previous representation is admitted for a purpose other than proving an asserted fact (original use), it can _also_ be used as evidence of the truth of the asserted fact (hearsay purpose).
+#### b) First-Hand Hearsay Exceptions (ss 63-66)
 
-:::danger[Impact of Lee v The Queen (1998)]
-Originally restricted s 60's application to first-hand assertions made by the declarant, not to second-hand (what A heard B say). This has since been _overruled by s 60(2)_, meaning second-hand and more remote hearsay can be admitted for its truth if there's an original use.
-:::
+- **"First-Hand Hearsay":** The person who made the statement either had, or may reasonably be supposed to have had, personal knowledge of the asserted fact (s 62).
+- **Unavailability of Declarant (Dictionary, Part 2, cl 4):** A person is unavailable if they are dead, incompetent, physically/mentally unable (and not reasonably practicable to overcome), unlawful to give evidence, prohibited by the Act, or if all reasonable steps to find/compel attendance have failed.
+- **Civil Proceedings - Maker Unavailable (s 63):** Hearsay rule does not apply if the declarant is unavailable. Evidence can be given by someone who perceived the representation or from a document containing it.
+- **Criminal Proceedings - Maker Unavailable (s 65):Specific circumstances (s 65(2)):** Representation made under a duty, shortly after the fact (unlikely to be a fabrication), highly probable reliability, or against the declarant's interests (and reliable).
+- **Previous testimony (s 65(3)):** If declarant cross-examined (or had reasonable opportunity) in a previous Australian/overseas proceeding.
+- **Defendant adduces evidence (s 65(8)):** Broader exception for evidence adduced by the defendant.
+- **"Retaliatory" Hearsay (s 65(9)):** If a defendant adduces first-hand hearsay, the Crown (or another party) can adduce other first-hand hearsay about the same matter, even if it wouldn't otherwise meet s 65(2) conditions.
+- **Civil Proceedings - Maker Available (s 64):Undue expense/delay/impracticability (s 64(2)):** Similar to s 63, but declarant is available.
+- **Declarant called as witness (s 64(3)):** If the declarant has been or is to be called, evidence of the representation is admissible.
+- **Criminal Proceedings - Maker Available (s 66):Declarant called as witness (s 66(2)):** If the representation was made when the asserted fact was "fresh in the memory" of the declarant.
+- **"Fresh in the memory" (s 66(2A)):** Time elapsed is a primary factor, but other relevant matters (nature of event, age/health, vividness of recollection) can be considered (_Graham v The Queen_ and subsequent amendments).
+- **Prosecutor's evidence of proofs (s 66(3)):** Generally, s 66(2) does not apply to evidence adduced by the prosecutor if the representation was made to indicate potential court evidence, _unless_ it concerns the identity of a person, place, or thing.
 
-**Examples of original uses:**
-- Prior inconsistent statements
-- Prior consistent statements  
-- Factual basis of expert opinions
+#### c) Contemporaneous Statements about State of Mind (s 66A)
 
-**Limitations:**
-- Testimonial use must be beneficial
-- Assertion of fact must be relevant (s 55)
-- Judicial discretions (ss 135, 136, 137) can still apply
+- **Formerly s 72:** The hearsay rule does not apply to a contemporaneous representation about a person's health, feelings, sensations, intention, knowledge, or state of mind.
+- **"Contemporaneous":** Made at the same time as the fact to which the representation relates, and which it is sought to establish. Limited to _first-hand_ hearsay (s 62(3)).
+- **Proof of Subsequent Act by Intention:** Evidence of intention can be admissible to prove a subsequent act, though this remains a controversial area at common law (e.g., _Walton v The Queen_).
 
-### First-Hand Hearsay Exceptions (ss 63-66)
+#### d) Documentary Business Records Exception (s 69)
 
-:::tip[First-Hand Hearsay Definition]
-The person who made the statement either had, or may reasonably be supposed to have had, personal knowledge of the asserted fact (s 62).
-:::
+- **Scope:** Applies to documents that are or were part of records kept by a person/body/organization in the course of or for the purposes of a business. "Business" is broadly defined.
+- **Admissibility Conditions (s 69(2)):** The representation must be made by a person with personal knowledge of the asserted fact, or based on information supplied by such a person (direct or indirect).
+- **Exclusions (s 69(3)):** Does _not_ apply if the representation was prepared/obtained for actual or contemplated legal proceedings, or in connection with a criminal investigation. This aims to prevent self-serving statements.
+- **Absence of Record (s 69(4)):** Can prove an event did not occur by showing no record of it exists in a system designed to record such events.
 
-#### Unavailability of Declarant
+### 4. Other Exceptions
 
-A person is unavailable if they are:
-- Dead
-- Incompetent  
-- Physically/mentally unable (and not reasonably practicable to overcome)
-- Unlawful to give evidence
-- Prohibited by the Act
-- All reasonable steps to find/compel attendance have failed
+- Admissions (s 81 - covered in Chapter 9, but noted as a hearsay exception).
+- Previous convictions as evidence in subsequent civil cases (s 92).
+- Evidence of character of accused (s 110).
+- Contents of tags, labels, and writing (s 70).
+- Electronic communications (s 71).
+- Aboriginal and Torres Strait Islander traditional laws and customs (s 72).
+- Reputation as to relationships and age (s 73).
+- Reputation as to public/general rights (s 74).
+- Interlocutory proceedings (s 75) - evidence admissible if source is adduced.
 
-#### Civil Proceedings - Maker Unavailable (s 63)
-Hearsay rule does not apply if the declarant is unavailable. Evidence can be given by someone who perceived the representation or from a document containing it.
+### 5. Discretions and Warnings
 
-#### Criminal Proceedings - Maker Unavailable (s 65)
+- **Discretionary Exclusion (s 135 - Civil, s 137 - Criminal):** Even if admissible, evidence may be excluded if its probative value is substantially outweighed by the danger of unfair prejudice, misleading/confusing the jury, or undue waste of time.
+- **"Unfair prejudice":** Debate exists on whether inability to cross-examine constitutes "unfair prejudice."
+- **Limiting Directions (s 136):** The court can limit the use of evidence for a specific purpose. This is particularly relevant when s 60 makes evidence admissible for a hearsay purpose after being admitted for a non-hearsay purpose.
+- **Judicial Warning to the Jury (s 165):** The judge may warn the jury about the unreliability of certain evidence (e.g., hearsay) and the reasons why.
 
-**Specific circumstances (s 65(2)):**
-- Representation made under a duty
-- Shortly after the fact (unlikely to be a fabrication)
-- Highly probable reliability
-- Against the declarant's interests (and reliable)
+## III. Relevant Cases
 
-**Previous testimony (s 65(3)):** If declarant cross-examined (or had reasonable opportunity) in a previous Australian/overseas proceeding.
+- **_Lithgow City Council v Jackson_ (2011) 281 ALR 223:** (Not detailed in provided texts, but listed as essential reading. Implies general principles or specific applications of hearsay exceptions, possibly related to official records or statements within a duty.)
+- **_Subramaniam v Public Prosecutor_ [1956] 1 WLR 965:** Classic case illustrating the distinction between original and hearsay evidence. Statements made by terrorists to the accused were admissible not for their truth, but to show the effect they had on the accused's state of mind (duress).
+- **_Welsh v R_ (1996) 90 A Crim R 364:** Explains the effect of s 60 on the factual substratum of an expert's report, reversing the common law position by allowing the history given to a doctor to be evidence of its truth.
+- **_Lee v The Queen_ (1998) 195 CLR 594:** Significant High Court decision that initially limited s 60, holding it did not permit second-hand hearsay to be used for its truth. _Subsequently overruled by s 60(2)_.
+- **_Ratten v R_ [1972] AC 378:** Common law case on _res gestae_, where a hysterical woman's "000" call was admissible not as hearsay but as evidence of her fear. Discussed in relation to implied assertions under s 59.
+- **_Wright v Doe d Tatham_ (1837) 112 ER 488:** Common law case defining "hearsay by conduct" (e.g., a sea captain taking family on a voyage implying seaworthiness). Under Uniform Laws, this would depend on whether the conduct was intended to assert the fact.
+- **_R v Hannes_ (2000) 158 FLR 359:** Illustrates the complexity of "intended implied representations" under s 59 and the disagreement among judges, leading to the clarification in s 59(2A).
+- **_In re Van Beelen_ (1974) 9 SASR 163:** Explores original uses of statements and discusses the rationale behind limiting confessions of guilt by non-parties due to fabrication risk.
+- **_Conway v The Queen_ (2000) 98 FCR 204:** Deals with the scope of "circumstances" in s 65(2)(b) and (c) for reliability, and the requirement that evidence be "perceived being made" for documentary hearsay.
+- **_R v Ambrosoli_ (2002) 55 NSWLR 603:** Further discusses the meaning of "circumstances" in s 65(2)(b) and (c) and the high threshold for reliability findings.
+- **_Caterpillar Inc v John Deere Ltd (No 2)_ (2000) 181 ALR 108:** Demonstrates the application of "unavailability" (cl 4) and the strict requirements for representations in documents (cl 6) under ss 63 and 64, as well as the notice requirements of s 67.
+- **_Ordukaya v Hicks_ [2000] NSWCA 180:** Discusses the application of s 135 (unfair prejudice) in civil proceedings to first-hand hearsay, specifically whether inability to cross-examine is a form of unfair prejudice.
+- **_Graham v The Queen_ (1998) 195 CLR 606:** Defined "fresh in the memory" in s 66(2) primarily by temporal relationship, leading to subsequent amendment (s 66(2A)) to allow consideration of other factors.
+- **_Papakosmas v The Queen_ (1999) 196 CLR 297:** Clarified that the Act reversed the common law position on "recent complaint" evidence, allowing it to be used for its hearsay purpose (truth of assertions) if relevant and meeting s 66 conditions, subject to discretions.
+- **_Vitali v Stachnik_ [2001] NSWSC 303:** Illustrates the application of the business records exception (s 69) and, crucially, the exclusion in s 69(3) for documents prepared in contemplation of proceedings.
 
-### Contemporaneous Statements about State of Mind (s 66A)
+## IV. Self-Guided Study
 
-:::note[Formerly s 72]
-The hearsay rule does not apply to a contemporaneous representation about a person's health, feelings, sensations, intention, knowledge, or state of mind.
-:::
-
-**"Contemporaneous":** Made at the same time as the fact to which the representation relates, and which it is sought to establish. Limited to _first-hand_ hearsay (s 62(3)).
-
-### Documentary Business Records Exception (s 69)
-
-**Scope:** Applies to documents that are or were part of records kept by a person/body/organization in the course of or for the purposes of a business. "Business" is broadly defined.
-
-**Admissibility Conditions (s 69(2)):** The representation must be made by a person with personal knowledge of the asserted fact, or based on information supplied by such a person (direct or indirect).
-
-:::caution[Important Exclusions (s 69(3))]
-Does _not_ apply if the representation was prepared/obtained for actual or contemplated legal proceedings, or in connection with a criminal investigation. This aims to prevent self-serving statements.
-:::
-
-## Key Cases
-
-### Subramaniam v Public Prosecutor [1956]
-:::tip[Classic Case]
-Statements made by terrorists to the accused were admissible not for their truth, but to show the effect they had on the accused's state of mind (duress).
-:::
-
-### Lee v The Queen (1998)
-Significant High Court decision that initially limited s 60, holding it did not permit second-hand hearsay to be used for its truth. _Subsequently overruled by s 60(2)_.
-
-### Graham v The Queen (1998)
-Defined "fresh in the memory" in s 66(2) primarily by temporal relationship, leading to subsequent amendment (s 66(2A)) to allow consideration of other factors.
-
-## Self-Assessment Quiz
-
-Test your understanding with these key questions:
-
-1. **Explain the fundamental distinction between "hearsay evidence" and "original evidence"**
-2. **List three reasons why hearsay evidence is generally considered inadmissible at common law**
-3. **Under the Uniform Evidence Laws, how does section 60 operate?**
-4. **What is meant by "first-hand hearsay" in the context of s 62?**
-5. **Describe the "fresh in the memory" requirement under section 66(2)**
-
----
-
-## Study Resources
-
-- **Evidence Act 2008 (Vic) pt 3.2**
-- **Uniform Evidence Laws textbook**
-- **Practice problem sets**
-- **Case law analysis exercises**
+- **Consult the _Evidence Act 2008 (Vic) pt 3.2_** thoroughly.
+- **Practice identifying hearsay** and distinguishing it from original evidence.
+- **Map out the exceptions:** Create flowcharts or tables to clearly understand the conditions for each exception (e.g., civil/criminal, available/unavailable, first-hand/second-hand).
+- **Focus on the rationales:** Understanding _why_ the rules and exceptions exist will help with application.
+- **Work through the provided example questions and answers** in the textbook, paying close attention to the examiner's comments and "Keep in Mind" sections. These highlight common errors and effective problem-solving strategies.
+- **Analyze the impact of judicial discretions:** Consider how ss 135-137 and s 165 can affect whether admissible hearsay is actually used, or how it is used.
 
 # Quiz: Hearsay Evidence
 

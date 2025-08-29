@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readdir, unlink, stat } from 'fs/promises';
+import { readdir, unlink, stat, writeFile, appendFile } from 'fs/promises';
 import { join, extname } from 'path';
 
 // Files to keep - same as in the middleware
@@ -48,6 +48,9 @@ const R2_EXTENSIONS = new Set([
   '.odt'
 ]);
 
+const logFile = join(process.cwd(), 'build-cleanup.log');
+let removedFiles = [];
+
 async function cleanDirectory(dirPath) {
   const entries = await readdir(dirPath, { withFileTypes: true });
   
@@ -61,14 +64,9 @@ async function cleanDirectory(dirPath) {
       const ext = extname(entry.name).toLowerCase();
       
       if (ext && !ALLOWED_EXTENSIONS.has(ext)) {
-        if (R2_EXTENSIONS.has(ext)) {
-          console.log(`[R2] File will be moved to R2: ${fullPath}`);
-          // For now, just remove it. Later this can be uploaded to R2
-          await unlink(fullPath);
-        } else {
-          console.log(`[REMOVE] Removing non-allowed file: ${fullPath}`);
-          await unlink(fullPath);
-        }
+        // Log file for local debugging (will be in .gitignore)
+        removedFiles.push(fullPath);
+        await unlink(fullPath);
       }
     }
   }
@@ -86,6 +84,14 @@ async function main() {
     
     console.log('Cleaning dist folder - removing non-allowed file types...');
     await cleanDirectory(distPath);
+    
+    // Write log file locally (will be in .gitignore)
+    if (removedFiles.length > 0) {
+      const timestamp = new Date().toISOString();
+      const logContent = `Build cleanup log - ${timestamp}\n${removedFiles.join('\n')}\n\n`;
+      await writeFile(logFile, logContent);
+    }
+    
     console.log('Dist folder cleaned successfully!');
   } catch (error) {
     if (error.code === 'ENOENT') {

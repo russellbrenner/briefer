@@ -1,7 +1,6 @@
 ---
 publish: true
 title: "Week 7 - Study Guide: Hearsay Evidence"
-description: "Comprehensive study guide covering hearsay evidence rules, exceptions, and key cases under the Uniform Evidence Laws. Includes quiz questions and glossary."
 course: LAW20009
 tags:
   - LAW20009

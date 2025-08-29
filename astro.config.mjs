@@ -22,14 +22,28 @@ export default defineConfig({
       customCss: [
         './src/styles/starlight-custom.css',
       ],
+      sidebar: [
+        {
+          label: 'Evidence Law (LAW20009)',
+          items: [
+            'law20009-week1-intro-relevance',
+            'law20009-week7-study-guide',
+            'law20009-week7-hearsay-flowchart',
+          ],
+        },
+        {
+          label: 'Commercial Law (LAW10013)',
+          items: [
+            'law10013-week1-intro-commercial-law',
+            'law10013-week2-sale-of-goods',
+          ],
+        },
+      ],
     }),
     mdx(),
     sitemap(),
   ],
-  output: "server",
-  adapter: cloudflare({
-    mode: "directory"
-  }),
+  output: "static",
   image: {
     service: {
       entrypoint: "astro/assets/services/noop"
