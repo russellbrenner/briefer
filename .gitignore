@@ -41,3 +41,6 @@ public/uni/**/Collaboration Sessions/*.mp4
 # Temporary files
 *.tmp
 *.swp
+
+# Ignore all synced vault assets (handled at runtime / R2)
+public/uni/
