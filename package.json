@@ -2,6 +2,7 @@
   "name": "briefer",
   "description": "Professional legal blog by a current law student and future barrister.",
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.6",
     "@astrojs/mdx": "4.3.0",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.4.1",
@@ -14,7 +15,11 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "sync:uni": "node scripts/sync-obsidian.mjs",
-    "sync:media": "node scripts/sync-media.mjs"
+    "sync:media": "node scripts/sync-media.mjs",
+    "deploy": "npm run build && wrangler deploy"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "^4.33.1"
+  }
 }

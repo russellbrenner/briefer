@@ -21,7 +21,7 @@ Briefer is a professional legal blog that provides clear, concise insights on co
 ## 🛠️ Built With
 
 - **[Astro](https://astro.build)** - Modern static site generator
-- **[Cloudflare Workers](https://workers.cloudflare.com)** - Edge deployment platform
+- **[Cloudflare Workers](https://workers.cloudflare.com)** - Edge computing platform
 - **TypeScript** - Type-safe development
 - **MDX** - Enhanced markdown with React components
 
@@ -60,7 +60,7 @@ This project is configured for deployment on Cloudflare Workers:
 1. **Build**: `npm run build`
 2. **Deploy**: `npm run deploy`
 
-The site automatically deploys to Cloudflare Workers with:
+The site deploys to Cloudflare Workers with:
 - ✅ Global CDN distribution
 - ✅ Automatic HTTPS
 - ✅ Edge computing capabilities

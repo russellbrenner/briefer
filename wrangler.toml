@@ -1,0 +1,17 @@
+name = "briefer"
+main = "dist/_worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+name = "briefer"
+
+# Optional: R2 bucket bindings for media
+# [[env.production.r2_buckets]]
+# binding = "MEDIA_BUCKET"
+# bucket_name = "briefer-media"
+
+# Optional: KV namespaces for caching
+# [[env.production.kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
