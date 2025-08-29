@@ -45,18 +45,22 @@ The markdown enhancement system uses these automated transformation patterns:
 
 1. **Obsidian Sync**: Raw markdown with `publish: true` frontmatter
 2. **Enhancement Pipeline**: Automated pattern matching and Starlight component injection
-3. **Build Process**: Static generation with optimized assets and lightbox functionality
-4. **Deployment**: Cloudflare Pages with build cleanup and performance optimization
+3. **Custom Landing Pages**: Week-based overview pages for organized navigation
+4. **Blog Integration**: Reflective posts and insights separate from study materials
+5. **Build Process**: Static generation with optimized assets and lightbox functionality
+6. **Deployment**: Cloudflare Pages with build cleanup and performance optimization
 
 ## Project Structure & Module Organization
 - `src/`: App code.
   - `components/` (Astro UI, PascalCase), `layouts/`, `pages/` (routes), `content/` → `blog/`, `uni/`, and `docs/` (Starlight).
+  - `pages/blog/`: Blog functionality with index and dynamic routing for reflective posts
+  - `content/blog/`: Blog posts with frontmatter (title, description, pubDate, tags)
   - `styles/`: Global styles and Starlight customization.
     - `global.css`: Professional legal theme with Inter/Newsreader fonts, navy/gold palette.
     - `starlight-custom.css`: Starlight-specific overrides for legal academic styling.
-- `public/`: Static assets served at root (`/uni/<COURSE>/...`).
+- `public/`: Static assets served at root (`/uni/<COURSE>/...`, `/lightbox.js`).
 - `functions/_middleware.js`: Workers middleware that blocks disallowed file types.
-- `scripts/`: Build/sync utilities (`sync-obsidian.mjs`, `post-build.mjs`).
+- `scripts/`: Build/sync utilities (`sync-obsidian.mjs`, `sync-and-enhance.mjs`, `enhance-markdown.mjs`, `post-build.mjs`).
 - `dist/`: Build output (generated). Do not edit.
 - `src/content.config.ts`: Content collections with schemas for `blog`, `uni`, and `docs` (docsSchema from Starlight).
 - `astro.config.mjs`, `wrangler.toml`: Astro + Cloudflare Workers + Starlight configuration.

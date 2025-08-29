@@ -143,18 +143,27 @@ Classic case illustrating hearsay vs original evidence distinction.
 
 ### Blog Posts
 
-Create files in `src/content/blog/` with this structure:
+The site includes a dedicated blog for reflective posts and deeper analysis. Create files in `src/content/blog/` with this structure:
 
 ```markdown
 ---
-title: "Your Post Title"
-description: "Brief description"
-pubDate: "2025-08-29"
-tags: ["legal", "analysis"]
+title: "Mastering Hearsay: Week 7 Reflections"
+description: "Personal strategies for tackling evidence law's most challenging topic"
+pubDate: "2025-08-30"
+tags: ["evidence-law", "hearsay", "legal-study", "reflection"]
 ---
 
-Your content here...
+Personal reflections on legal studies, case analysis, and professional development insights...
 ```
+
+**Blog Features:**
+- Professional typography optimized for longer-form content
+- Tag-based organization for easy categorization
+- Responsive design for reading on any device
+- Integration with main site navigation
+- SEO-friendly URLs and metadata
+
+**Access:** Blog is available at `/blog/` with a dedicated index page and individual post pages.
 
 ### University Notes (Obsidian Integration)
 
@@ -339,10 +348,23 @@ npx wrangler whoami
 
 ### For Blog Posts
 
-1. **Create markdown file** in `src/content/blog/`
-2. **Add frontmatter** with title, date, description, tags
-3. **Test locally**: `npm run dev`
-4. **Deploy**: `git push` or `npm run deploy`
+1. **Create markdown file** in `src/content/blog/` with proper frontmatter
+2. **Include required fields**: title, description, pubDate, tags array
+3. **Write content** using markdown with professional tone for legal insights
+4. **Test locally**: `npm run dev` and visit `/blog/`
+5. **Deploy**: `git push` or `npm run deploy`
+
+### For Custom Landing Pages
+
+Week-based overview pages are automatically created for each subject/week combination:
+- **Evidence Law**: `/law20009-week1/`, `/law20009-week2/`, etc.
+- **Commercial Law**: `/law10013-week1/`, `/law10013-week2/`, etc.
+
+These pages provide:
+- Learning objectives for the week
+- Links to all materials (study guides, collaboration notes)
+- Quick reference tables
+- Study tips and navigation to related weeks
 
 ## 🔍 Debugging Commands
 
@@ -393,8 +415,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Interactive Callouts**: Note, tip, caution, and danger callouts for better content organization
 - **Auto-generated Navigation**: Sidebar and table of contents generated from file structure
 - **Professional Styling**: Custom CSS for legal academic content presentation
-- **Interactive Lightbox**: Click any image to zoom (up to 8x), pan, and download original files
+- **Interactive Lightbox**: Click any image to zoom (10% increments up to 5x), pan, and download original files
 - **Enhanced Typography**: Balanced dark/light themes with excellent contrast for extended reading
+- **Custom Landing Pages**: Week-based overview pages for organized study by subject and week
+- **Blog Integration**: Reflective posts and deeper analysis separate from study materials
 
 ### Content Management
 - **Multi-source Content**: Blog posts, university notes (Obsidian sync), and Starlight docs

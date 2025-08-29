@@ -1,0 +1,258 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title} | Briefer</title>
+    <meta name="description" content={post.data.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="blog-header">
+      <div class="container">
+        <nav>
+          <a href="/blog" class="back-link">← All Posts</a>
+          <a href="/" class="home-link">Study Materials</a>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="blog-main">
+      <div class="container">
+        <article class="blog-post">
+          <header class="post-header">
+            <div class="post-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long', 
+                  day: 'numeric'
+                })}
+              </time>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="post-tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <h1>{post.data.title}</h1>
+            <p class="post-description">{post.data.description}</p>
+          </header>
+          
+          <div class="post-content">
+            <Content />
+          </div>
+        </article>
+      </div>
+    </main>
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        background: #f8fafc;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      
+      .blog-header {
+        background: white;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 1.5rem 0;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .back-link,
+      .home-link {
+        color: #64748b;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      
+      .back-link:hover,
+      .home-link:hover {
+        color: #3b82f6;
+      }
+      
+      .blog-main {
+        padding: 3rem 0;
+      }
+      
+      .blog-post {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+      
+      .post-header {
+        padding: 2.5rem;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      
+      .post-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+      
+      .post-tags {
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      .tag {
+        background: #e2e8f0;
+        color: #475569;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-family: 'Newsreader', serif;
+        line-height: 1.2;
+      }
+      
+      .post-description {
+        font-size: 1.1rem;
+        color: #64748b;
+      }
+      
+      .post-content {
+        padding: 2.5rem;
+      }
+      
+      /* Blog content styling */
+      :global(.post-content h2) {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 2rem 0 1rem 0;
+        color: #1e293b;
+      }
+      
+      :global(.post-content h3) {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem 0;
+        color: #334155;
+      }
+      
+      :global(.post-content p) {
+        margin-bottom: 1.25rem;
+        font-family: 'Newsreader', serif;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+      
+      :global(.post-content ul, .post-content ol) {
+        margin-bottom: 1.25rem;
+        padding-left: 1.5rem;
+      }
+      
+      :global(.post-content li) {
+        margin-bottom: 0.5rem;
+        font-family: 'Newsreader', serif;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+      
+      :global(.post-content blockquote) {
+        border-left: 4px solid #3b82f6;
+        padding-left: 1.5rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #64748b;
+      }
+      
+      :global(.post-content code) {
+        background: #f1f5f9;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+        color: #e11d48;
+      }
+      
+      :global(.post-content pre) {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+      }
+      
+      :global(.post-content pre code) {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .post-header,
+        .post-content {
+          padding: 1.5rem;
+        }
+        
+        nav {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </body>
+</html>
