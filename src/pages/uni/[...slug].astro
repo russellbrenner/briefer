@@ -4,6 +4,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
+import ImageLightbox from '../../components/ImageLightbox.astro';
 import { slugifyPath } from '../../utils/slug';
 
 export async function getStaticPaths() {
@@ -174,6 +175,43 @@ if (entry) {
         overflow-x: auto;
       }
       
+      .prose :global(img) {
+        margin: 2rem auto;
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        display: block;
+      }
+      
+      .prose :global(img:hover) {
+        box-shadow: var(--box-shadow-hover);
+        transform: translateY(-2px);
+        border-color: rgba(var(--accent), 0.3);
+      }
+      
+      .prose :global(img)::after {
+        content: '🔍 Click to enlarge';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 0.5em 1em;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-family: "Inter", sans-serif;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .prose :global(img:hover)::after {
+        opacity: 1;
+      }
+      
       .error-container {
         grid-column: 1 / -1;
         text-align: center;
@@ -293,5 +331,6 @@ if (entry) {
       </div>
     </main>
     <Footer />
+    <ImageLightbox />
   </body>
 </html>
