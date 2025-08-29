@@ -83,9 +83,12 @@ import FormattedDate from '../components/FormattedDate.astro';
 		<main class="coming-soon">
 			<div class="hero">
 				<h1 class="logo">Briefer</h1>
-				<p class="tagline">Coming Soon...</p>
+				<p class="tagline">Test Deployment Active</p>
 				<p style="margin-top: 1rem; font-size: 1rem; opacity: 0.8;">
-					Last updated: <FormattedDate date={new Date()} />
+					Deployed: {new Date().toISOString()} ({Math.floor(Date.now() / 1000)})
+				</p>
+				<p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
+					Commit: 19f6d7c - Workers deployment with auto-deploy from GitHub
 				</p>
 				<a href="mailto:enquiries@briefer.me" class="contact-link">
 					📧 Enquiries
