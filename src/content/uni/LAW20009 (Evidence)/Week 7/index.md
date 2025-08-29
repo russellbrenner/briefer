@@ -21,6 +21,14 @@ By completing this week's materials, you will be able to:
 - **Analyze** factual scenarios to determine admissibility of evidence
 - **Understand** the role of judicial discretions in managing hearsay evidence
 
+## Media Resources
+
+### Audio/Video Materials
+
+- **[Hearsay Unpacked Podcast](https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/Hearsay_Unpacked__Navigating_Evidence,_Exceptions,_and_the_Evolving_Search_for_Truth.m4a)** - Comprehensive audio discussion navigating evidence, exceptions, and the evolving search for truth
+- **[The Hearsay Hurdle Video](https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/The_Hearsay_Hurdle.mp4)** - Visual explanation of hearsay concepts and challenges
+- **[Section 59 Flowchart (High-Res)](https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/Section_59_Hearsay_Admissibility_Mermaid_Chart.png)** - Downloadable flowchart for quick reference
+
 ## Study Materials
 
 ### Core Resources
@@ -143,6 +151,20 @@ This material is essential for:
 - Misapplying first-hand hearsay requirements
 - Overlooking contemporaneous statement exceptions
 - Ignoring judicial discretion to exclude
+
+## Media Player
+
+### Audio: Hearsay Unpacked Podcast
+<audio controls style="width: 100%; margin: 1em 0;">
+  <source src="https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/Hearsay_Unpacked__Navigating_Evidence,_Exceptions,_and_the_Evolving_Search_for_Truth.m4a" type="audio/mp4">
+  Your browser does not support the audio element. <a href="https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/Hearsay_Unpacked__Navigating_Evidence,_Exceptions,_and_the_Evolving_Search_for_Truth.m4a">Download the audio file</a>.
+</audio>
+
+### Video: The Hearsay Hurdle
+<video controls style="width: 100%; max-width: 800px; margin: 1em 0;">
+  <source src="https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/The_Hearsay_Hurdle.mp4" type="video/mp4">
+  Your browser does not support the video element. <a href="https://7e54c6a6793d77879ab8c905969f61b9.r2.cloudflarestorage.com/briefer-media/LAW20009/Week7/The_Hearsay_Hurdle.mp4">Download the video</a>.
+</video>
 
 ---
 

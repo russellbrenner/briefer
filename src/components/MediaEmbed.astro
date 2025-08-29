@@ -1,0 +1,85 @@
+---
+export interface Props {
+  src: string;
+  type: 'audio' | 'video' | 'image';
+  title?: string;
+  description?: string;
+  width?: string;
+  height?: string;
+}
+
+const { src, type, title, description, width = '100%', height = 'auto' } = Astro.props;
+---
+
+<div class="media-container">
+  {title && <h4>{title}</h4>}
+  {description && <p class="media-description">{description}</p>}
+  
+  {type === 'audio' && (
+    <audio controls class="media-player">
+      <source src={src} type={src.endsWith('.mp3') ? 'audio/mpeg' : 'audio/mp4'} />
+      Your browser does not support the audio element.
+      <a href={src} download>Download audio</a>
+    </audio>
+  )}
+  
+  {type === 'video' && (
+    <video controls class="media-player" style={`width: ${width}; height: ${height};`}>
+      <source src={src} type="video/mp4" />
+      Your browser does not support the video element.
+      <a href={src} download>Download video</a>
+    </video>
+  )}
+  
+  {type === 'image' && (
+    <a href={src} target="_blank" rel="noopener noreferrer">
+      <img src={src} alt={title || 'Media content'} class="media-image" style={`width: ${width}; height: ${height};`} />
+    </a>
+  )}
+</div>
+
+<style>
+  .media-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(var(--gray-light), 0.3);
+    border-radius: 8px;
+  }
+  
+  .media-container h4 {
+    margin: 0 0 0.5rem 0;
+    color: rgb(var(--black));
+  }
+  
+  .media-description {
+    margin: 0 0 1rem 0;
+    font-style: italic;
+    color: rgb(var(--gray-dark));
+  }
+  
+  .media-player {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 4px;
+  }
+  
+  .media-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .media-image:hover {
+    transform: scale(1.02);
+  }
+  
+  audio.media-player {
+    height: 40px;
+  }
+  
+  video.media-player {
+    background: #000;
+  }
+</style>
