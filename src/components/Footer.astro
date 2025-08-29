@@ -3,7 +3,7 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+	&copy; {today.getFullYear()} Briefer. All rights reserved.
 	<div class="social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>
@@ -40,23 +40,14 @@ const today = new Date();
 	</div>
 </footer>
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  footer {
+    padding: 2em 1em 6em 1em;
+    background: linear-gradient(var(--gray-gradient)) no-repeat;
+    color: rgb(var(--gray));
+    text-align: center;
+    font-size: .95rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .social-links { display: none; }
+  .social-links a { display: none; }
 </style>

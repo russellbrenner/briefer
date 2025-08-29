@@ -4,6 +4,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { slugifyPath } from '../../utils/slug';
 
 const notes = await getCollection('uni');
 const byCourse = new Map();
@@ -66,7 +67,7 @@ function groupByWeek(notes) {
                       const isIndex = n.id?.endsWith('index');
                       return (
                         <li>
-                          <a href={`/uni/${n.id}/`} class={isIndex ? 'index-link' : ''}>
+                          <a href={`/uni/${slugifyPath(n.id)}/`} class={isIndex ? 'index-link' : ''}>
                             {isIndex ? `📚 ${title}` : title}
                           </a>
                         </li>
@@ -147,4 +148,3 @@ function groupByWeek(notes) {
     </style>
   </body>
 </html>
-

@@ -1,31 +1,44 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { slugifyPath } from '../../utils/slug';
 
 export async function getStaticPaths() {
   const notes = await getCollection('uni');
   return notes.map((entry) => ({
-    params: { slug: entry.id },
-    props: entry,
+    params: { slug: slugifyPath(entry.id) },
   }));
 }
 
-const entry = Astro.props;
-const { Content } = await render(entry);
+const requested = (Astro.params.slug as string).toLowerCase().replace(/-+/g, '-');
+const all = await getCollection('uni');
+const entry = all.find((e) => slugifyPath(e.id) === requested);
+let Content: any;
+if (entry) {
+  ({ Content } = await render(entry));
+} else {
+  Astro.response.status = 404;
+}
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{entry.data.title ?? entry.id}</title>
+    <title>{entry?.data.title ?? requested}</title>
   </head>
   <body>
-    <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+    <main style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
       <p><a href="/uni">← Back to Uni notes</a></p>
-      <article>
-        <h1>{entry.data.title ?? entry.id}</h1>
-        <Content />
-      </article>
+      {entry ? (
+        <article class="prose">
+          <h1>{entry.data.title ?? requested}</h1>
+          <Content />
+        </article>
+      ) : (
+        <article class="prose">
+          <h1>Not Found</h1>
+          <p>The requested note could not be located.</p>
+        </article>
+      )}
     </main>
   </body>
   </html>
-

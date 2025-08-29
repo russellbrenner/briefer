@@ -5,11 +5,11 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2 class="brand"><a href="/"><img src="/logo-rb.svg" alt="Russell Brenner logo" class="logo" />{SITE_TITLE}</a></h2>
 		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+    <HeaderLink href="/about">About</HeaderLink>
 		</div>
 		<div class="social-links">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">
@@ -43,16 +43,17 @@ import { SITE_TITLE } from '../consts';
 	</nav>
 </header>
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+  header {
+    margin: 0;
+    padding: 0 1em;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  }
+  h2 {
+    margin: 0;
+    font-size: 1em;
+    font-family: var(--serif);
+  }
 
 	h2 a,
 	h2 a.active {
@@ -63,23 +64,20 @@ import { SITE_TITLE } from '../consts';
 		align-items: center;
 		justify-content: space-between;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+    font-weight: 600;
+  }
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
+  .social-links,
+  .social-links a { display: none; }
+
+  .brand a { display: inline-flex; align-items: center; gap: .6em; }
+  .logo { width: 28px; height: 28px; display: block; }
 </style>
