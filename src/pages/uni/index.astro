@@ -1,5 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
 const notes = await getCollection('uni');
 const byCourse = new Map();
 for (const n of notes) {
@@ -7,30 +12,139 @@ for (const n of notes) {
   if (!byCourse.has(course)) byCourse.set(course, []);
   byCourse.get(course).push(n);
 }
-for (const list of byCourse.values()) list.sort((a, b) => (a.id || '').localeCompare(b.id || ''));
+
+// Sort courses and notes within each course
+const sortedCourses = Array.from(byCourse.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+for (const [course, list] of sortedCourses) {
+  list.sort((a, b) => (a.id || '').localeCompare(b.id || ''));
+}
+
+// Group notes by week for better organization
+function groupByWeek(notes) {
+  const weeks = new Map();
+  for (const note of notes) {
+    const match = note.id?.match(/Week\s+(\d+)/i);
+    const week = match ? `Week ${match[1]}` : 'Other';
+    if (!weeks.has(week)) weeks.set(week, []);
+    weeks.get(week).push(note);
+  }
+  return Array.from(weeks.entries()).sort((a, b) => {
+    if (a[0] === 'Other') return 1;
+    if (b[0] === 'Other') return -1;
+    return a[0].localeCompare(b[0], undefined, { numeric: true });
+  });
+}
 ---
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Uni Notes</title>
+    <BaseHead title="University Notes" description="Law course materials and study guides" />
   </head>
   <body>
-    <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
-      <h1>Uni Notes</h1>
-      {Array.from(byCourse.entries()).map(([course, items]) => (
-        <section>
-          <h2>{course}</h2>
-          <ul>
-            {items.map((n) => (
-              <li>
-                <a href={`/uni/${n.id || ''}/`}>{n.data.title ?? n.id ?? 'Untitled'}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+    <Header />
+    <main>
+      <section>
+        <h1>University Notes</h1>
+        <p>Course materials, study guides, and resources for law subjects.</p>
+        
+        {sortedCourses.map(([course, items]) => {
+          const weeks = groupByWeek(items);
+          return (
+            <article class="course-section">
+              <h2>{course}</h2>
+              <p class="course-description">
+                {course === 'LAW20009 (Evidence)' && 'Evidence law materials covering hearsay, admissibility, and exceptions under the Evidence Act 2008 (Vic).'}
+                {course === 'LAW20009' && 'Evidence law materials covering hearsay, admissibility, and exceptions under the Evidence Act 2008 (Vic).'}
+              </p>
+              
+              {weeks.map(([week, weekNotes]) => (
+                <div class="week-section">
+                  <h3>{week}</h3>
+                  <ul>
+                    {weekNotes.map((n) => {
+                      const title = n.data.title || n.id?.split('/').pop() || 'Untitled';
+                      const isIndex = n.id?.endsWith('index');
+                      return (
+                        <li>
+                          <a href={`/uni/${n.id}/`} class={isIndex ? 'index-link' : ''}>
+                            {isIndex ? `📚 ${title}` : title}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </article>
+          );
+        })}
+      </section>
     </main>
+    <Footer />
+    <style>
+      main {
+        width: 960px;
+        margin: 0 auto;
+        padding: 1em;
+      }
+      .course-section {
+        margin: 2em 0;
+        padding: 1.5em;
+        background: rgb(var(--gray-gradient));
+        border-radius: 8px;
+      }
+      .course-section h2 {
+        color: rgb(var(--black));
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+      }
+      .course-description {
+        color: rgb(var(--gray-dark));
+        margin-bottom: 1em;
+        font-style: italic;
+      }
+      .week-section {
+        margin: 1em 0;
+      }
+      .week-section h3 {
+        color: rgb(var(--gray-dark));
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        line-height: 1.8;
+      }
+      ul li {
+        margin: 0.5em 0;
+      }
+      ul li a {
+        color: rgb(var(--black));
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+      ul li a:hover {
+        border-bottom-color: rgb(var(--accent));
+      }
+      .index-link {
+        font-weight: bold;
+        color: rgb(var(--accent)) !important;
+      }
+      h1 {
+        font-size: 3em;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 0.5em;
+      }
+      section > p {
+        text-align: center;
+        color: rgb(var(--gray-dark));
+        margin-bottom: 2em;
+      }
+    </style>
   </body>
-  </html>
+</html>
 

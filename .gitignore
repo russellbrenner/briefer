@@ -26,3 +26,18 @@ pnpm-debug.log*
 # wrangler files
 .wrangler
 .dev.vars
+
+# Large media files that should not be in git
+public/uni/**/*.mp4
+public/uni/**/*.mp3
+public/uni/**/*.m4a
+public/uni/**/*.mov
+public/uni/**/*.avi
+
+# Large PDF textbooks (keep smaller PDFs)
+public/uni/**/Text Book/*.pdf
+public/uni/**/Collaboration Sessions/*.mp4
+
+# Temporary files
+*.tmp
+*.swp

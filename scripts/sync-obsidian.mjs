@@ -12,7 +12,7 @@ const COURSES = (process.env.OBSIDIAN_COURSES || 'LAW10013,LAW20009')
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
-const REQUIRE_PUBLISH = (process.env.OBSIDIAN_REQUIRE_PUBLISH || 'false').toLowerCase() === 'true';
+const REQUIRE_PUBLISH = (process.env.OBSIDIAN_REQUIRE_PUBLISH || 'true').toLowerCase() === 'true';
 
 const DEST_CONTENT = path.resolve('src/content/uni');
 const DEST_PUBLIC = path.resolve('public/uni');
@@ -116,8 +116,13 @@ async function syncCourse(course) {
           const head = text.slice(0, end);
           const body = text.slice(end + 4);
           const courseLine = /\ncourse:/i.test(head) ? '' : `\ncourse: ${course}`;
-          text = `${head}${courseLine}\n---${body}`;
+          const tagsLine = /\ntags:/i.test(head) ? '' : `\ntags: [${course}, uni, evidence]`;
+          text = `${head}${courseLine}${tagsLine}\n---${body}`;
         }
+      } else {
+        // Add frontmatter if not present
+        const title = path.basename(from, path.extname(from));
+        text = `---\ntitle: "${title}"\ncourse: ${course}\ntags: [${course}, uni, evidence]\ndate: ${new Date().toISOString().split('T')[0]}\n---\n\n${text}`;
       }
       await fs.writeFile(to, text, 'utf8');
     } else {

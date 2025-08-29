@@ -104,13 +104,62 @@ Notes:
 
 ## 🎨 Customization
 
+
 The site uses a custom design system with:
 - Professional legal-themed color scheme
 - Responsive design for all devices
 - Modern typography and spacing
 - Glassmorphism UI elements
 
-## 📧 Contact & Social
+## 🧩 Add a new static page (About)
+
+Create a simple static page at `/about` using MDX. This does not require any data sources or collections.
+
+1. Create the file `src/pages/about.mdx` with the following content:
+
+   ```mdx
+   ---
+   title: "About"
+   description: "About Briefer — professional legal commentary and analysis"
+   ---
+
+   import BaseLayout from "../layouts/BaseLayout.astro";
+
+   <BaseLayout title={frontmatter.title} description={frontmatter.description}>
+     <h1>About Briefer</h1>
+     <p><strong>Briefer</strong> is a professional legal blog providing clear, concise insights on contemporary legal issues. It is written by a current law student preparing for practice at the Victorian Bar.</p>
+
+     <h2>Focus</h2>
+     <ul>
+       <li>Case analysis: landmark authorities and recent judgments</li>
+       <li>Legal commentary: developments, reforms, and practical implications</li>
+       <li>Practice-oriented notes: statutes, principles, and quick references</li>
+     </ul>
+
+     <h2>Editorial approach</h2>
+     <p>Plain language, rigorous sourcing (AGLC4 where applicable), and pragmatic context for students and practitioners.</p>
+
+     <h2>Contact</h2>
+     <p>Connect on <a href="https://linkedin.com/in/russellbrenner">LinkedIn</a> or email <a href="mailto:russ@briefer.me">russ@briefer.me</a>.</p>
+   </BaseLayout>
+   ```
+
+2. Start the dev server and visit `http://localhost:4321/about`:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Deploy as usual when satisfied:
+
+   ```bash
+   npm run build && npm run deploy
+   ```
+
+### Notes
+- If your project does not include `src/layouts/BaseLayout.astro`, replace the MDX layout import and wrapper with plain Markdown (keep the frontmatter). Astro will render the page at `/about` automatically.
+- To add a navigation link, update your header/nav component under `src/components/` to include an anchor to `/about`.
+
 
 - **LinkedIn**: [Russell Brenner](https://linkedin.com/in/russellbrenner)
 - **Email**: [russ@briefer.me](mailto:russ@briefer.me)
