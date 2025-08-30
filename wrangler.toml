@@ -4,3 +4,6 @@ main = "functions/_worker.js"
 
 [site]
 bucket = "./dist"
+
+[observability.logs]
+enabled = true
