@@ -12,10 +12,9 @@ This document serves as a comprehensive guide for understanding the repository s
    - Troubleshooting build and deployment issues across multiple iterations
 
 2. **DevOps Engineer Agent**: Employed for:
-   - Cloudflare Pages deployment configuration (NOT Workers - this is a static site)
+   - Cloudflare Pages deployment configuration and optimization
    - Build pipeline setup with post-build cleanup processes  
    - Static site generation architecture decisions
-   - GitHub Actions workflow for Cloudflare Pages deployment
 
 ### Key Transformation Prompts Used
 
@@ -49,7 +48,7 @@ The markdown enhancement system uses these automated transformation patterns:
 3. **Custom Landing Pages**: Week-based overview pages for organized navigation
 4. **Blog Integration**: Reflective posts and insights separate from study materials
 5. **Build Process**: Static generation with optimized assets and lightbox functionality
-6. **Deployment**: Cloudflare Pages (static hosting) - NOT Cloudflare Workers (serverless)
+6. **Deployment**: Cloudflare Pages with build cleanup and performance optimization
 
 ## Project Structure & Module Organization
 - `src/`: App code.
@@ -60,11 +59,11 @@ The markdown enhancement system uses these automated transformation patterns:
     - `global.css`: Professional legal theme with Inter/Newsreader fonts, navy/gold palette.
     - `starlight-custom.css`: Starlight-specific overrides for legal academic styling.
 - `public/`: Static assets served at root (`/uni/<COURSE>/...`, `/lightbox.js`).
+- `functions/_middleware.js`: Workers middleware that blocks disallowed file types.
 - `scripts/`: Build/sync utilities (`sync-obsidian.mjs`, `sync-and-enhance.mjs`, `enhance-markdown.mjs`, `post-build.mjs`).
 - `dist/`: Build output (generated). Do not edit.
 - `src/content.config.ts`: Content collections with schemas for `blog`, `uni`, and `docs` (docsSchema from Starlight).
-- `astro.config.mjs`: Astro + Starlight configuration with `output: "static"` for Cloudflare Pages.
-- `wrangler.toml`: Cloudflare Pages configuration with `pages_build_output_dir = "dist"`.
+- `astro.config.mjs`, `wrangler.toml`: Astro + Cloudflare Workers + Starlight configuration.
 
 ## Build, Test, and Development Commands
 - `npm install`: Install dependencies.
@@ -75,7 +74,7 @@ The markdown enhancement system uses these automated transformation patterns:
 - `npm run sync:uni`: Sync Obsidian notes → `src/content/uni/` and media → `public/uni/`.
 - `npm run sync:enhanced`: Enhanced sync with automatic Starlight transformation.
 - `npm run sync:media`: Copy media from vault with size/meta rules.
-- `npm run deploy`: Build and deploy to Cloudflare Pages via Wrangler (uses `pages deploy` command).
+- `npm run deploy`: Build and deploy via Cloudflare Wrangler.
 
 ## Coding Style & Naming Conventions
 - Language: TypeScript + ESM; Astro components in `.astro`, content in `.md/.mdx`.
@@ -88,7 +87,7 @@ The markdown enhancement system uses these automated transformation patterns:
 - No formal test suite yet. Validate by:
   - Running `npm run build` → no errors; `npm run preview` for manual QA.
   - Check content validation errors from Astro content collections.
-  - Post-build cleanup removes non-web file types from `dist/`.
+  - Verify middleware behavior by requesting uncommon file types (should 404).
 
 ## Commit & Pull Request Guidelines
 - Use Conventional Commits observed in history: `feat(scope): ...`, `fix: ...`, `docs: ...`, `chore: ...`, `refactor: ...`.
@@ -96,6 +95,6 @@ The markdown enhancement system uses these automated transformation patterns:
 - Keep diffs focused; update README/DEPLOYMENT if workflows change.
 
 ## Security & Configuration Tips
-- Do not commit secrets. Use GitHub Secrets for CI/CD (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`).
-- This is a static site deployed to Cloudflare Pages - no R2/KV bindings or Workers functions.
-- Post-build script removes non-web file types from `dist/` for security.
+- Do not commit secrets. Use `wrangler secret put` and environment vars (`OBSIDIAN_*`).
+- R2/KV bindings are defined in `wrangler.toml`; keep IDs out of code.
+- Post-build and middleware intentionally remove/deny non-web file types; store documents (PDF, DOCX) in R2.
