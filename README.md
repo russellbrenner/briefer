@@ -1,19 +1,19 @@
 # Briefer - Legal Insights & Analysis
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+[![Deploy to Cloudflare Pages](https://img.shields.io/badge/Deploy%20to-Cloudflare%20Pages-FF6C37?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 
 **Professional legal commentary and analysis by a current law student and future barrister.**
 
 ## 🚀 Live Sites
 
-- **Primary**: [https://briefer.me](https://briefer.me)
-- **Workers**: [https://briefer.overlaynet.workers.dev](https://briefer.overlaynet.workers.dev)
+- **Primary**: [https://briefer.me](https://briefer.me) - Cloudflare Pages deployment
+- **Pages**: Deployed via GitHub Actions to Cloudflare Pages (static site hosting)
 
 ## 🛠️ Built With
 
 - **[Astro](https://astro.build)** - Modern static site generator
 - **[Starlight](https://starlight.astro.build)** - Professional documentation framework
-- **[Cloudflare Workers](https://workers.cloudflare.com)** - Edge computing platform
+- **[Cloudflare Pages](https://pages.cloudflare.com)** - Static site hosting with global CDN
 - **TypeScript** - Type-safe development
 - **MDX** - Enhanced markdown with React components
 
@@ -33,7 +33,7 @@ briefer/
 ├── public/             # Static assets
 ├── scripts/            # Build and sync scripts
 ├── dist/              # Build output (generated)
-├── wrangler.toml      # Cloudflare Workers configuration
+├── wrangler.toml      # Cloudflare Pages configuration
 └── .github/workflows/ # GitHub Actions CI/CD
 ```
 
@@ -43,7 +43,7 @@ briefer/
 
 1. **Node.js** (v18+)
 2. **Git** configured with your details
-3. **Cloudflare account** with Workers enabled
+3. **Cloudflare account** with Pages enabled
 4. **Wrangler CLI** authenticated (`npx wrangler login`)
 5. **Obsidian vault** (if syncing university notes)
 
@@ -109,7 +109,7 @@ npm run deploy
 
 # Or step by step
 npm run build
-npx wrangler deploy --env production
+npx wrangler pages deploy dist --project-name=briefer
 ```
 
 ## 📝 Content Management
@@ -240,8 +240,8 @@ find src/content -name "*.md" -o -name "*.mdx"
 # 4. Clean build
 npm run build
 
-# 5. Deploy
-npx wrangler deploy --env production
+# 5. Deploy to Cloudflare Pages
+npx wrangler pages deploy dist --project-name=briefer
 
 # 6. Commit state
 git add -A
@@ -269,12 +269,12 @@ The automated deployment runs on every push to `main`:
 - Build with Node.js 20
 - Install dependencies with npm ci
 - Run npm run build
-- Deploy to Cloudflare Workers
+- Deploy to Cloudflare Pages (NOT Workers)
 ```
 
 **Monitoring deployments:**
 - GitHub: https://github.com/your-username/briefer/actions
-- Cloudflare: https://dash.cloudflare.com/workers
+- Cloudflare: https://dash.cloudflare.com/ (Pages section)
 
 ## 🚨 Common Issues & Solutions
 
@@ -303,7 +303,7 @@ The automated deployment runs on every push to `main`:
 # Clear everything and rebuild
 rm -rf .astro dist node_modules/.astro src/content/blog/*
 npm run build
-npx wrangler deploy --env production
+npx wrangler pages deploy dist --project-name=briefer
 ```
 
 ### Issue: Obsidian sync not working
@@ -389,8 +389,8 @@ npx wrangler tail briefer --env production --format pretty
 
 ## 🌐 Domain Configuration
 
-- **briefer.me** → Cloudflare Workers custom domain
-- **briefer.overlaynet.workers.dev** → Default Workers subdomain
+- **briefer.me** → Cloudflare Pages custom domain (static site hosting)
+- **Note**: This is a static site deployed to Cloudflare Pages, NOT Workers
 
 Both serve the same content with global CDN caching.
 
@@ -428,8 +428,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Responsive Design**: Mobile-optimized for study on any device
 
 ### Development & Deployment
-- **Modern Stack**: Astro 5 + Starlight + TypeScript + Cloudflare Workers
-- **Edge Deployment**: Global CDN with Cloudflare Workers for fast access
+- **Modern Stack**: Astro 5 + Starlight + TypeScript + Cloudflare Pages
+- **Static Deployment**: Global CDN with Cloudflare Pages for fast static site hosting
 - **Automated CI/CD**: GitHub Actions for seamless deployments
 - **Content Collections**: Type-safe content with schema validation
 
