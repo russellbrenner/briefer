@@ -61,7 +61,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
-  output: "static",
+  output: "server",
+  adapter: cloudflare(),
   image: {
     service: {
       entrypoint: "astro/assets/services/noop"
