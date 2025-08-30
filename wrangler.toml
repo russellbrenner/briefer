@@ -1,6 +1,6 @@
 name = "briefer"
 compatibility_date = "2024-09-23"
-pages_build_output_dir = "dist"
+main = "dist/_worker.js"
 
 [env.production]
 name = "briefer"
