@@ -1,14 +1,16 @@
-// Global lightbox functionality for Starlight documentation
+// Fixed lightbox functionality with simple zoom control
 (function() {
   'use strict';
   
-  let currentZoom = 1;
+  let currentZoom = 1; // Start at 100% (fit to screen)
   let currentImageSrc = '';
   let isDragging = false;
   let dragStartX = 0;
   let dragStartY = 0;
   let imageX = 0;
   let imageY = 0;
+  let naturalWidth = 0;
+  let naturalHeight = 0;
   
   // Initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
@@ -23,11 +25,13 @@
         <div class="lightbox-content">
           <img id="starlight-lightbox-image" class="lightbox-image" />
           <div class="lightbox-controls">
-            <button id="starlight-download-btn">📥 Download</button>
-            <span id="starlight-zoom-level">100%</span>
-            <button id="starlight-zoom-in">🔍+ Zoom In</button>
-            <button id="starlight-zoom-out">🔍- Zoom Out</button>
-            <button id="starlight-reset-zoom">↻ Reset</button>
+            <button id="starlight-download-btn">📥</button>
+            <button id="starlight-zoom-out">−</button>
+            <input type="number" id="starlight-zoom-input" value="20" min="5" max="500" style="width:60px; text-align:center;">
+            <span>%</span>
+            <button id="starlight-zoom-in">+</button>
+            <button id="starlight-fit-screen">Fit</button>
+            <button id="starlight-reset-zoom">⌂</button>
           </div>
         </div>
       </div>
@@ -42,6 +46,8 @@
     const zoomInBtn = document.getElementById('starlight-zoom-in');
     const zoomOutBtn = document.getElementById('starlight-zoom-out');
     const resetZoomBtn = document.getElementById('starlight-reset-zoom');
+    const fitScreenBtn = document.getElementById('starlight-fit-screen');
+    const zoomInput = document.getElementById('starlight-zoom-input');
     
     // Add click handlers to all images in Starlight content
     const images = document.querySelectorAll('.sl-markdown-content img');
@@ -64,6 +70,11 @@
     zoomInBtn.addEventListener('click', zoomIn);
     zoomOutBtn.addEventListener('click', zoomOut);
     resetZoomBtn.addEventListener('click', resetZoom);
+    fitScreenBtn.addEventListener('click', fitToScreen);
+    zoomInput.addEventListener('change', setZoomFromInput);
+    zoomInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') setZoomFromInput();
+    });
     
     // Keyboard controls
     document.addEventListener('keydown', function(e) {
@@ -108,11 +119,18 @@
     
     currentImageSrc = img.src;
     lightboxImg.src = currentImageSrc;
-    currentZoom = 1;
-    imageX = 0;
-    imageY = 0;
-    lightboxImg.style.transform = `scale(${currentZoom}) translate(${imageX}px, ${imageY}px)`;
-    lightboxImg.classList.remove('zoomed');
+    
+    // Wait for image to load 
+    lightboxImg.onload = function() {
+      naturalWidth = this.naturalWidth;
+      naturalHeight = this.naturalHeight;
+      
+      // Start at 20%
+      currentZoom = 0.2;
+      imageX = 0;
+      imageY = 0;
+      updateZoom();
+    };
     
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -122,34 +140,56 @@
     const modal = document.getElementById('starlight-lightbox');
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
-    currentZoom = 1;
   }
   
   function zoomIn() {
-    currentZoom = Math.min(currentZoom * 1.1, 5); // 10% increments, max 5x
+    currentZoom = Math.min(currentZoom + 0.05, 5); // 5% increments, max 500%
     updateZoom();
   }
   
   function zoomOut() {
-    currentZoom = Math.max(currentZoom / 1.1, 0.2); // 10% decrements, min 0.2x
+    currentZoom = Math.max(currentZoom - 0.05, 0.05); // 5% decrements, min 5%
     updateZoom();
   }
   
   function resetZoom() {
-    currentZoom = 1;
+    currentZoom = 1; // Reset to 100%
     imageX = 0;
     imageY = 0;
     updateZoom();
   }
   
+  function fitToScreen() {
+    // 25% for 1080p screens - adjust based on resolution
+    currentZoom = 0.25;
+    imageX = 0;
+    imageY = 0;
+    updateZoom();
+  }
+  
+  function setZoomFromInput() {
+    const zoomInput = document.getElementById('starlight-zoom-input');
+    const value = parseFloat(zoomInput.value);
+    if (!isNaN(value) && value >= 5 && value <= 500) {
+      currentZoom = value / 100; // Convert percentage to decimal
+      imageX = 0;
+      imageY = 0;
+      updateZoom();
+    }
+  }
+  
   function updateZoom() {
     const lightboxImg = document.getElementById('starlight-lightbox-image');
-    const zoomLevel = document.getElementById('starlight-zoom-level');
+    const zoomInput = document.getElementById('starlight-zoom-input');
     
-    lightboxImg.style.transform = `scale(${currentZoom}) translate(${imageX}px, ${imageY}px)`;
-    zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+    // Use absolute scale value
+    lightboxImg.style.transform = `scale(${currentZoom}) translate(${imageX / currentZoom}px, ${imageY / currentZoom}px)`;
     
-    if (currentZoom > 1) {
+    // Update the input field with current zoom percentage
+    const displayZoom = Math.round(currentZoom * 100);
+    zoomInput.value = displayZoom;
+    
+    if (currentZoom > 0.2) { // Above 20%
       lightboxImg.classList.add('zoomed');
       lightboxImg.style.cursor = 'grab';
     } else {
@@ -161,7 +201,7 @@
   }
   
   function startDrag(e) {
-    if (currentZoom > 1) {
+    if (currentZoom > baseZoom) {
       isDragging = true;
       dragStartX = e.clientX - imageX;
       dragStartY = e.clientY - imageY;
@@ -170,7 +210,7 @@
   }
   
   function drag(e) {
-    if (isDragging && currentZoom > 1) {
+    if (isDragging && currentZoom > baseZoom) {
       imageX = e.clientX - dragStartX;
       imageY = e.clientY - dragStartY;
       updateZoom();
